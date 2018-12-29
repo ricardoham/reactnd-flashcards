@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getDecks } from '../actions/action-decks';
@@ -13,13 +13,28 @@ class MainDecks extends Component {
   }
 
   render() {
+    const { decks } = this.props;
+    console.log('My decks data ohhh: ', decks);
+
+    if (!decks) {
+      <View>
+        <Text>Loading...</Text>
+      </View>
+    }
     return (
       <View>
-        <DecksList />
+        <DecksList
+          decks={decks}
+        />
       </View>
     );
   }
 }
+
+MainDecks.propTypes = {
+  decks: PropTypes.array,
+  actions: PropTypes.object,
+};
 
 const mapStateToProps = state => ({
   decks: state.decks.decksData,
