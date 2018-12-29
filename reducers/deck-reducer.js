@@ -7,7 +7,7 @@ export default function (state = INITIAL_STATE, action) {
     case FETCH_ALL_DECKS_SUCCESS:
       return {
         ...state,
-        decks: action.payload,
+        decksData: action.payload,
       };
     default:
       return state;

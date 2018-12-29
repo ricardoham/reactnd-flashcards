@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getDecks } from '../actions/action-decks';
+import DecksList from './decks-list';
 
 class MainDecks extends Component {
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.getDecks();
+  }
+
   render() {
     return (
       <View>
-        <Text>Main Decks</Text>
+        <DecksList />
       </View>
     );
   }
 }
 
-export default MainDecks;
+const mapStateToProps = state => ({
+  decks: state.decks.decksData,
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ getDecks }, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainDecks);
