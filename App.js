@@ -7,29 +7,14 @@ import configureStore from './store/config-store';
 import MainDecks from './components/main-decks';
 import NewDeck from './components/new-deck';
 
-// const Tabs = createBottomTabNavigator({
-//   MainDecks: {
-//     screen: MainDecks,
-//     navigationOptions: {
-//       tabBarLabel: 'DECKS',
-//     },
-//   },
-//   NewDeck: {
-//     screen: NewDeck,
-//     navigationOptions: {
-//       tabBarLabel: 'NEW DECK',
-//     },
-//   },
-// });
-
-const TabNavigatior = createBottomTabNavigator({
+const TabNavigator = createBottomTabNavigator({
   DECKS: { screen: MainDecks },
   NEWDECK: { screen: NewDeck },
 });
 
 const MainNavigator = createStackNavigator({
   Home: {
-    screen: Tabs,
+    screen: TabNavigator,
     navigationOptions: {
       title: 'FlashCards',
     },
@@ -43,7 +28,7 @@ export default class App extends Component {
     const store = configureStore();
     return (
       <Provider store={store}>
-        <View>
+        <View style={{ flex: 1 }}>
           <AppContainer />
         </View>
       </Provider>
