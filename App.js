@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
+import { TabNavigator, StackNavigator } from 'react-navigation';
 import configureStore from './store/config-store';
+
+import MainDecks from './components/main-decks';
+import NewDeck from './components/new-deck';
+
+const Tabs = TabNavigator({
+  MainDecks: {
+    screen: MainDecks,
+    navigationOptions: {
+      tabBarLabel: 'DECKS',
+    },
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      tabBarLabel: 'NEW DECK',
+    },
+  },
+});
 
 export default class App extends Component {
   render() {

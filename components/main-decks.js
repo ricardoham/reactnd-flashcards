@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-class NewDeck extends Component {
+class MainDecks extends Component {
   render() {
     return (
       <View>
-        <Text>NewDeck</Text>
+        <Text>Main Decks</Text>
       </View>
     );
   }
 }
 
-export default NewDeck;
+export default MainDecks;
