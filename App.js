@@ -29,7 +29,7 @@ const TabNavigatior = createBottomTabNavigator({
 
 const MainNavigator = createStackNavigator({
   Home: {
-    screen: TabNavigatior,
+    screen: Tabs,
     navigationOptions: {
       title: 'FlashCards',
     },
