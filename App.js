@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import configureStore from './store/config-store';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
+    const store = configureStore();
     return (
-      <View style={styles.container}>
-        <Text>My nigga</Text>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <Text>My nigga</Text>
+        </View>
+      </Provider>
     );
   }
 }
