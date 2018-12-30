@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, TextInput } from 'react-native';
+import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 
 class NewDeck extends Component {
+  state = {
+    input: '',
+  }
+
+  handleText = (input) => {
+    this.setState(() => {
+      input: event.target.value
+    })
+  }
+
   render() {
     return (
       <View>
-        <Text>New Deck works</Text>
+        <View>
+          <FormLabel>Whats is the title of the New Deck</FormLabel>
+          <FormInput 
+            // onChange={this.handleText}
+          />
+        </View>
       </View>
     );
   }

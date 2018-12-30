@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { List, ListItem } from 'react-native-elements';
 
 class DeckList extends Component {
 
@@ -8,7 +8,7 @@ class DeckList extends Component {
     const { decks } = this.props;
 
     return (
-      <View>
+      <List>
         <FlatList
           data={decks}
           renderItem={({ item }) => (
@@ -18,7 +18,7 @@ class DeckList extends Component {
           )} 
           keyExtractor={item => item.key}
         />
-      </View>
+      </List>
     );
   }
 }
