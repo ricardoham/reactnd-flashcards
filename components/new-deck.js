@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
-import { View, TextInput } from 'react-native';
+import { View, TextInput, Keyboard, KeyboardAvoidingView } from 'react-native';
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 
 class NewDeck extends Component {
   state = {
-    input: '',
+    decks: '',
+  }
+
+  handleSubmit = () => {
+    
   }
 
   handleText = (input) => {

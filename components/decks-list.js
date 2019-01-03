@@ -13,7 +13,7 @@ class DeckList extends Component {
           data={decks}
           renderItem={({ item }) => (
             <ListItem
-              title={item.key}
+              title={item.title}
             />
           )} 
           keyExtractor={item => item.key}
