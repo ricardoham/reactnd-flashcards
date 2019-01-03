@@ -12,9 +12,9 @@ export function getDecks() {
 
 export function addDeck(deck) {
   return dispatch => (
-    decksAPI.addDeck().then(response => dispatch({
+    decksAPI.addDeck(deck).then(() => dispatch({
       type: ADD_DECK_SUCCESS,
-      deck
+      deck,
     }))
   )
 }

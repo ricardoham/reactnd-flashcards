@@ -1,4 +1,4 @@
-import { FETCH_ALL_DECKS_SUCCESS } from '../actions/action-types';
+import { FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS } from '../actions/action-types';
 
 const INITIAL_STATE = {};
 
@@ -9,6 +9,11 @@ export default function (state = INITIAL_STATE, action) {
         ...state,
         decksData: action.payload,
       };
+    case ADD_DECK_SUCCESS:
+      return {
+        ...state,
+        ...action.deck
+      }
     default:
       return state;
   }
