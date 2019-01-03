@@ -8,6 +8,7 @@ function setDummyData() {
 }
 
 export default function deckResults(results) {
+  console.log("MY RESULTS", results);
   if (results === null) {
     results = setDummyData();
   } else {
