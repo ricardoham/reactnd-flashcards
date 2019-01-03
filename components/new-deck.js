@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { View, TextInput, Keyboard, KeyboardAvoidingView } from 'react-native';
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements'
 
 class NewDeck extends Component {
   state = {
-    decks: '',
+    input: '',
   }
 
   handleSubmit = () => {
@@ -13,7 +13,7 @@ class NewDeck extends Component {
 
   handleText = (input) => {
     this.setState(() => {
-      input: event.target.value
+      input
     })
   }
 
@@ -24,6 +24,9 @@ class NewDeck extends Component {
           <FormLabel>Whats is the title of the New Deck</FormLabel>
           <FormInput 
             // onChange={this.handleText}
+          />
+          <Button 
+            title="SUBMIT"
           />
         </View>
       </View>

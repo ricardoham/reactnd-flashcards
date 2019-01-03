@@ -1,16 +1,16 @@
 import { AsyncStorage } from 'react-native';
-import { dummyData, DECK_STORAGE_KEY } from './constants';
+import { decks, DECK_STORAGE_KEY } from './constants';
 
-function setDummyData() {
-  AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(dummyData));
+function setdecks() {
+  AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(decks));
 
-  return dummyData;
+  return decks;
 }
 
 export default function deckResults(results) {
   console.log("MY RESULTS", results);
   if (results === null) {
-    results = setDummyData();
+    results = setdecks();
   } else {
     results = JSON.parse(results);
   }
