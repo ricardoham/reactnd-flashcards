@@ -21,6 +21,7 @@ class NewDeck extends Component {
         title: input,
         questions: [],
       }
+      console.log('TEXT INPUT', deck.title);
       console.log('DSSIIII', deck);
       actions.addDeck(deck);
       console.log('The decks', decks);
