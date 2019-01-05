@@ -10,9 +10,9 @@ export const getDecks = () => AsyncStorage.getItem(DECK_STORAGE_KEY)
 // }
 
 export const addDeck = (title) => {
+  console.log('Deixa ber---', title);
     return AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
       title,
-      questions: [],
     }));
 }
 

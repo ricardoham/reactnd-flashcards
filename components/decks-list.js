@@ -3,18 +3,6 @@ import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 
 class DeckList extends Component {
-
-  renderItem = ({ item }) => {
-    console.log('MY ITEM', item.title);
-    return (
-    <View>
-      <Text>
-        {item.title}
-      </Text>
-    </View>
-    );
-  }
-
   render() {
     const { decks } = this.props;
 
@@ -28,18 +16,14 @@ class DeckList extends Component {
             <ListItem
               title={item.title}
               subtitle={`${item.questions.length} cards`}
+              onPress={() => this.props.navigation.navigate(
+                'DeckView'
+              )}
             />
           )} 
           keyExtractor={item => item.title}
         />
       </List>
-   
-        // <FlatList
-        //   data={decks}
-        //   renderItem={this.renderItem}
-        //   keyExtractor={(item, index) => index.toString()}
-        // /> 
-
     );
   }
 }

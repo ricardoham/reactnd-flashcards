@@ -6,6 +6,7 @@ import configureStore from './store/config-store';
 
 import MainDecks from './components/main-decks';
 import NewDeck from './components/new-deck';
+import DeckView from './components/deck-view';
 
 const TabNavigator = createBottomTabNavigator({
   DECKS: { screen: MainDecks },
@@ -19,6 +20,10 @@ const MainNavigator = createStackNavigator({
       title: 'FlashCards',
     },
   },
+  DeckView: {
+    screen: DeckView,
+    navigationOptions:{}
+  }
 });
 
 const AppContainer = createAppContainer(MainNavigator);

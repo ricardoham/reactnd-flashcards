@@ -5,7 +5,6 @@ import { DECK_STORAGE_KEY } from './constants';
 
 function setDecks() {
   AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(decks));
-
   return decks;
 }
 

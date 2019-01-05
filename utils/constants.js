@@ -1,4 +1,4 @@
-export const DECK_STORAGE_KEY = 'UdacitFlashcard:deck5';
+export const DECK_STORAGE_KEY = 'UdacitFlashcard:ddeck6';
 
 const decks = [
   {

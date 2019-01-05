@@ -1,8 +1,6 @@
 import { FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS, ADD_DECK_FAILURE } from '../actions/action-types';
 
-const INITIAL_STATE = {
-  decksData: undefined,
-};
+const INITIAL_STATE = [];
 
 export default function (state = INITIAL_STATE, action) {
   console.log('REDUX', action)
@@ -16,11 +14,15 @@ export default function (state = INITIAL_STATE, action) {
       console.log('SSSSSS', state);
       return {
         ...state,
-        decksData: [...state.decksData, action.deck]
+        decksData: [...state.decksData, action.title]
       }
+      // return [...state.decksData, action.title]
     case ADD_DECK_FAILURE:
+    console.log('SSSSSS', state);
+
       return {
         ...state,
+        decksData: undefined,
         error: action.error
       }
     default:
