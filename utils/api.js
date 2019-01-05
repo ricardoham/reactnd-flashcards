@@ -14,4 +14,8 @@ export const addDeck = (title) => {
       title,
       questions: [],
     }));
-  }
+}
+
+// export const getSingleDeck(title) {
+//   return  getDecks().then()
+// }
