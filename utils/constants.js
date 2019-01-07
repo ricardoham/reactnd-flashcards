@@ -1,6 +1,6 @@
-export const DECK_STORAGE_KEY = 'UdacitFlashcard:deck';
+export const DECK_STORAGE_KEY = 'UdacitFlashcard:ddeck6';
 
-export const decks = [
+const decks = [
   {
     title: 'React',
     questions: [

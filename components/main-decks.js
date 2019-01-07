@@ -16,9 +16,9 @@ class MainDecks extends Component {
     const { decks } = this.props;
     console.log('My decks data ohhh: ', decks);
 
-    if (!decks) {
+    if (decks === null || decks === undefined) {
       <View>
-        <Text>Loading...</Text>
+        <Text>NO DECKS IN THIS MOMENT</Text>
       </View>
     }
     return (
