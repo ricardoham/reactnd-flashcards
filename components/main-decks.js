@@ -10,7 +10,6 @@ class MainDecks extends Component {
   componentDidMount() {
     const { actions } = this.props;
     actions.getDecks();
-    console.log('Chamou didmountssss')
   }
 
   render() {

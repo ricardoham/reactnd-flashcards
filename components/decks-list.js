@@ -5,9 +5,6 @@ import { List, ListItem } from 'react-native-elements';
 class DeckList extends Component {
   render() {
     const { decks } = this.props;
-
-    console.log('BORED DECKS', decks);
-
     return (
       <List>
         <FlatList

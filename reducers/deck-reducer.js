@@ -22,7 +22,6 @@ export default function (state = INITIAL_STATE, action) {
 
       return {
         ...state,
-        decksData: undefined,
         error: action.error
       }
     default:
