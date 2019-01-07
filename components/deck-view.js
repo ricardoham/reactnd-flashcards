@@ -10,7 +10,10 @@ class DeckView extends Component {
       <View>
         <Card title={deck.title}>
           <Text>{`${deck.questions.length} cards`}</Text>
-          <Button title="Add Card" />
+          <Button 
+            title="Add Card"
+            onPress={() => this.props.navigation()}
+          />
           <Button title="Start Quiz" />
         </Card>
       </View>
