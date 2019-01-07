@@ -22,7 +22,6 @@ const MainNavigator = createStackNavigator({
   },
   DeckView: {
     screen: DeckView,
-    navigationOptions:{}
   }
 });
 

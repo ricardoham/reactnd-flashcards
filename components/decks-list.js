@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View, Text, FlatList, TouchableOpacity,
+} from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 
 class DeckList extends Component {
   render() {
-    const { decks } = this.props;
+    const { decks, navigation } = this.props;
     return (
       <List>
         <FlatList
@@ -13,11 +15,13 @@ class DeckList extends Component {
             <ListItem
               title={item.title}
               subtitle={`${item.questions.length} cards`}
-              onPress={() => this.props.navigation.navigate(
-                'DeckView', { item }
-              )}
+              onPress={() => {
+                navigation.navigate(
+                  'DeckView', { item },
+                );
+              }}
             />
-          )} 
+          )}
           keyExtractor={item => item.title}
         />
       </List>

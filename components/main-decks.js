@@ -19,12 +19,13 @@ class MainDecks extends Component {
     if (decks === null || decks === undefined) {
       <View>
         <Text>NO DECKS IN THIS MOMENT</Text>
-      </View>
+      </View>;
     }
     return (
       <View>
         <DecksList
           decks={decks}
+          {...this.props}
         />
       </View>
     );
