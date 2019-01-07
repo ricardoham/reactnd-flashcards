@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
 
 class DeckView extends Component {
   render() {
-    
+    const { navigation } = this.props;
+    const { deck } = this.props;
     return (
       <View>
-        <Text></Text>
+        <Card title={deck.title}>
+          <Text>{`${deck.questions.length} cards`}</Text>
+          <Button title="Add Card" />
+          <Button title="Start Quiz" />
+        </Card>
       </View>
     )
   }

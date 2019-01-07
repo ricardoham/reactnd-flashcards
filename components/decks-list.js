@@ -14,7 +14,7 @@ class DeckList extends Component {
               title={item.title}
               subtitle={`${item.questions.length} cards`}
               onPress={() => this.props.navigation.navigate(
-                'DeckView'
+                'DeckView', { item }
               )}
             />
           )} 
