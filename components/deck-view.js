@@ -5,19 +5,27 @@ import { Card, Button } from 'react-native-elements';
 class DeckView extends Component {
   render() {
     const { navigation } = this.props;
-    const { deck } = this.props;
+    const title = navigation.getParam('title');
+    const questionLength = navigation.getParam('questions');
+
     return (
       <View>
-        <Card title={deck.title}>
-          <Text>{`${deck.questions.length} cards`}</Text>
-          <Button 
+        <Card title={title}>
+          <Text>
+            {questionLength}
+            {' '}
+              Cards
+          </Text>
+          <Button
             title="Add Card"
-            onPress={() => this.props.navigation()}
+            onPress={() => navigation.navigate(
+              'NewCard',
+            )}
           />
           <Button title="Start Quiz" />
         </Card>
       </View>
-    )
+    );
   }
 }
 

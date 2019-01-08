@@ -17,14 +17,17 @@ class MainDecks extends Component {
     console.log('My decks data ohhh: ', decks);
 
     if (decks === null || decks === undefined) {
-      <View>
-        <Text>NO DECKS IN THIS MOMENT</Text>
-      </View>
+      return (
+        <View>
+          <Text>NO DECKS IN THIS MOMENT</Text>
+        </View>
+      );
     }
     return (
       <View>
         <DecksList
           decks={decks}
+          {...this.props}
         />
       </View>
     );

@@ -7,6 +7,7 @@ import configureStore from './store/config-store';
 import MainDecks from './components/main-decks';
 import NewDeck from './components/new-deck';
 import DeckView from './components/deck-view';
+import NewCard from './components/new-card';
 
 const TabNavigator = createBottomTabNavigator({
   DECKS: { screen: MainDecks },
@@ -22,8 +23,12 @@ const MainNavigator = createStackNavigator({
   },
   DeckView: {
     screen: DeckView,
-    navigationOptions:{}
-  }
+    navigationOptions: {},
+  },
+  NewCard: {
+    screen: NewCard,
+    navigationOptions: {},
+  },
 });
 
 const AppContainer = createAppContainer(MainNavigator);

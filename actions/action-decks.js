@@ -17,10 +17,9 @@ export function addDeck(deck) {
       type: ADD_DECK_SUCCESS,
       deck,
     }))
-    .catch(error => dispatch({
-      type: ADD_DECK_FAILURE,
-      error
-    }))
-  )
+      .catch(error => dispatch({
+        type: ADD_DECK_FAILURE,
+        error,
+      }))
+  );
 }
-

@@ -4,6 +4,7 @@ import { FormLabel, FormInput, Button } from 'react-native-elements';
 
 class NewCard extends Component {
   render() {
+    const { navigation } = this.props;
     return (
       <View>
         <View>
@@ -12,12 +13,17 @@ class NewCard extends Component {
         </View>
         <View>
           <FormLabel>Answer:</FormLabel>
+          <FormInput />
         </View>
-        <Button 
+        <Button
           title="SUBMIT"
         />
+        <Button
+          title="BACK TO HOME"
+          onPress={() => navigation.navigate('Home')}
+        />
       </View>
-    )
+    );
   }
 }
 

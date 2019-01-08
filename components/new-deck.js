@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addDeck } from '../actions/action-decks';
-import { View, TextInput, Keyboard, KeyboardAvoidingView } from 'react-native';
-import { FormLabel, FormInput, FormValidationMessage, Button } from 'react-native-elements'
+import {
+  View, TextInput, Keyboard, KeyboardAvoidingView,
+} from 'react-native';
+import {
+  FormLabel, FormInput, FormValidationMessage, Button,
+} from 'react-native-elements';
 import { bindActionCreators } from 'redux';
+import { addDeck } from '../actions/action-decks';
 
 class NewDeck extends Component {
   state = {
@@ -15,36 +19,31 @@ class NewDeck extends Component {
     const { input } = this.state;
 
     if (!input) {
-      console.log('Dont Have input!')
+      console.log('Dont Have input!');
     } else {
-      let deck = {
+      const deck = {
         title: input,
         questions: [],
-      }
-      console.log('TEXT INPUT', deck.title);
-      console.log('DSSIIII', deck);
+      };
       actions.addDeck(deck);
-      console.log('The decks', decks);
     }
-
   }
 
   handleText = (text) => {
     this.setState({
-      input: text
+      input: text,
     });
     console.log('THE INPUTs', this.state.input);
   }
 
   render() {
-
     const { input } = this.state;
 
     return (
       <View>
         <View>
           <FormLabel>Whats is the title of the New Deck</FormLabel>
-          <FormInput 
+          <FormInput
             onChangeText={this.handleText}
             value={input}
           />
