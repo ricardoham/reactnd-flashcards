@@ -16,6 +16,10 @@ class DecksList extends Component {
   render() {
     const { decks, navigation } = this.props;
 
+    if (!decks) {
+      console.log('NOT DECKS');
+    }
+
     console.log('THE DECKS', decks);
 
     return (
@@ -26,7 +30,7 @@ class DecksList extends Component {
             <ListItem
               title={item.title}
               subtitle={`${item.questions.length} cards`}
-              onPress={() => this.props.navigation.navigate(
+              onPress={() => navigation.navigate(
                 'DeckView', { title: item.title, questions: item.questions },
               )}
             />
@@ -46,4 +50,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ getDecks }, dispatch),
 });
 
-export default connect(mapDispatchToProps, mapStateToProps)(DecksList);
+export default connect(mapStateToProps, mapDispatchToProps)(DecksList);

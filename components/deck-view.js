@@ -11,6 +11,7 @@ class DeckView extends Component {
       <View>
         <Card title={title}>
           {/* <Text>{`${deck.questions.length} cards`}</Text> */}
+          <Text>{title}</Text>
           <Button
             title="Add Card"
             onPress={() => this.props.navigation()}
