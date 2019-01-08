@@ -4,12 +4,12 @@ import { Provider } from 'react-redux';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import configureStore from './store/config-store';
 
-import DecksList from './components/decks-list';
+import MainDecks from './components/main-decks';
 import NewDeck from './components/new-deck';
 import DeckView from './components/deck-view';
 
 const TabNavigator = createBottomTabNavigator({
-  DECKS: { screen: DecksList },
+  DECKS: { screen: MainDecks },
   NEWDECK: { screen: NewDeck },
 });
 
