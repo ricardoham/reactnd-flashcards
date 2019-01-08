@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
- View, TextInput, Keyboard, KeyboardAvoidingView 
+  View, TextInput, Keyboard, KeyboardAvoidingView,
 } from 'react-native';
 import {
- FormLabel, FormInput, FormValidationMessage, Button 
+  FormLabel, FormInput, FormValidationMessage, Button,
 } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addDeck } from '../actions/action-decks';

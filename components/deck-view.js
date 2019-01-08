@@ -7,7 +7,7 @@ class DeckView extends Component {
     const { navigation } = this.props;
     const title = navigation.getParam('title');
     const questionLength = navigation.getParam('questions');
-    console.log('Title Item', title);
+
     return (
       <View>
         <Card title={title}>
@@ -18,7 +18,9 @@ class DeckView extends Component {
           </Text>
           <Button
             title="Add Card"
-            onPress={() => this.props.navigation()}
+            onPress={() => navigation.navigate(
+              'NewCard',
+            )}
           />
           <Button title="Start Quiz" />
         </Card>
