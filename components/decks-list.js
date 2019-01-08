@@ -11,12 +11,12 @@ class DecksList extends Component {
       <List>
         <FlatList
           data={decks}
-          renderItem={({ item }) => (
+          renderItem={({ item, index }) => (
             <ListItem
               title={item.title}
               subtitle={`${item.questions.length} cards`}
               onPress={() => navigation.navigate(
-                'DeckView', { title: item.title, questions: item.questions.length },
+                'DeckView', { deckKey: index, title: item.title, questions: item.questions.length },
               )}
             />
           )}
