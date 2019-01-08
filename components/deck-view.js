@@ -5,10 +5,11 @@ import { Card, Button } from 'react-native-elements';
 class DeckView extends Component {
   render() {
     const { navigation } = this.props;
-    const { deck } = this.props;
+    const { title, questions } = this.props;
+    console.log('Title Item', title);
     return (
       <View>
-        <Card>
+        <Card title={title}>
           {/* <Text>{`${deck.questions.length} cards`}</Text> */}
           <Button
             title="Add Card"

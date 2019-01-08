@@ -45,4 +45,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ getDecks }, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainDecks);
+// export default connect(mapStateToProps, mapDispatchToProps)(MainDecks);
