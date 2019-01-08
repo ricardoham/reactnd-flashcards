@@ -3,7 +3,6 @@ import { FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS, ADD_DECK_FAILURE } from '../
 const INITIAL_STATE = [];
 
 export default function (state = INITIAL_STATE, action) {
-  console.log('REDUX', action);
   switch (action.type) {
     case FETCH_ALL_DECKS_SUCCESS:
       return {
@@ -11,15 +10,11 @@ export default function (state = INITIAL_STATE, action) {
         decksData: action.payload,
       };
     case ADD_DECK_SUCCESS:
-      console.log('SSSSSS', state);
       return {
         ...state,
-        decksData: [...state.decksData, action.title],
+        decksData: [...state.decksData, action.deck],
       };
-      // return [...state.decksData, action.title]
     case ADD_DECK_FAILURE:
-      console.log('SSSSSS', state);
-
       return {
         ...state,
         error: action.error,

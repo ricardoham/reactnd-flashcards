@@ -11,7 +11,6 @@ export function getDecks() {
 }
 
 export function addDeck(deck) {
-  console.log('DECJ ACTion', deck);
   return dispatch => (
     decksAPI.addDeck(deck).then(() => dispatch({
       type: ADD_DECK_SUCCESS,

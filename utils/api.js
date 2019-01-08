@@ -5,14 +5,6 @@ import { DECK_STORAGE_KEY } from './constants';
 export const getDecks = () => AsyncStorage.getItem(DECK_STORAGE_KEY)
   .then(deckResults);
 
-// export const getDecks = () =>  {
-//   return AsyncStorage.getItem(DECK_STORAGE_KEY);
-// }
-
-export const addDeck = title => AsyncStorage.mergeItem(DECK_STORAGE_KEY, JSON.stringify({
-  title,
-}));
-
-// export const getSingleDeck(title) {
-//   return  getDecks().then()
-// }
+export const addDeck = deck => AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then(JSON.parse)
+  .then(data => AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify([...data, deck])));
