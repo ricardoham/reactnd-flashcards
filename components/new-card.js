@@ -34,6 +34,8 @@ class NewCard extends Component {
         question: inputQuestion,
       },
     ];
+    console.log('OnSubmit KEY', deckKey);
+    console.log('OnSubmit', questions);
     actions.addCard(deckKey, questions);
   }
 

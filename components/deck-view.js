@@ -22,7 +22,7 @@ class DeckView extends Component {
           <Button
             title="Add Card"
             onPress={() => navigation.navigate(
-              'NewCard',
+              'NewCard', { deckKey },
             )}
           />
           <Button title="Start Quiz" />
