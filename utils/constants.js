@@ -1,4 +1,4 @@
-export const DECK_STORAGE_KEY = 'ricardo:deck';
+export const DECK_STORAGE_KEY = 'ricardo:decks!';
 
 export const decks = [
   {
