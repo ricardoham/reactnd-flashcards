@@ -36,7 +36,8 @@ class NewCard extends Component {
     ];
     console.log('OnSubmit KEY', deckKey);
     console.log('OnSubmit', questions);
-    actions.addCard(deckKey, questions);
+    actions.addCard(deckKey, questions)
+      .then(navigation.navigate('Home'));
   }
 
   render() {

@@ -23,14 +23,11 @@ export default function (state = INITIAL_STATE, action) {
         error: action.error,
       };
     case ADD_CARD_SUCCESS:
-      console.log('-----REDUX DATAs', state.decksData);
-      const deckIndex = state.decksData.findIndex(c => c.index === action.deckKey);
-      console.log('Redux deck index', deckIndex);
-      const updateDeck = [...state.decksData];
-      updateDeck[deckIndex] = action.question;
+      const updatedDeck = [...state.decksData];
+      updatedDeck[action.deckKey].questions.push(action.question);
       return {
         ...state,
-        decksData: updateDeck,
+        decksData: updatedDeck,
       };
     case ADD_CARD_FAILURE:
       return {
