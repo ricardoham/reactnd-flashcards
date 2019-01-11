@@ -16,7 +16,7 @@ class DecksList extends Component {
               title={item.title}
               subtitle={`${item.questions.length} cards`}
               onPress={() => navigation.navigate(
-                'DeckView', { deckKey: index, title: item.title, questions: item.questions.length },
+                'DeckView', { deckKey: index, title: item.title, questions: item.questions },
               )}
             />
           )}
