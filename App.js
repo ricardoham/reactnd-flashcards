@@ -8,6 +8,7 @@ import MainDecks from './components/main-decks';
 import NewDeck from './components/new-deck';
 import DeckView from './components/deck-view';
 import NewCard from './components/new-card';
+import QuizView from './components/quiz-view';
 
 const TabNavigator = createBottomTabNavigator({
   DECKS: { screen: MainDecks },
@@ -27,6 +28,10 @@ const MainNavigator = createStackNavigator({
   },
   NewCard: {
     screen: NewCard,
+    navigationOptions: {},
+  },
+  QuizView: {
+    screen: QuizView,
     navigationOptions: {},
   },
 });
