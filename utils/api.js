@@ -12,7 +12,6 @@ export const addDeck = deck => AsyncStorage.getItem(DECK_STORAGE_KEY)
 export const addCard = (deckKey, question) => AsyncStorage.getItem(DECK_STORAGE_KEY)
   .then(JSON.parse)
   .then((data) => {
-    console.log('API DECKKEY', deckKey);
     data[deckKey].questions.push(question);
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
   });
