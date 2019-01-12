@@ -1,4 +1,4 @@
-export const DECK_STORAGE_KEY = 'ricardo:decks!';
+export const DECK_STORAGE_KEY = 'ricard:udacicards';
 
 export const decks = [
   {

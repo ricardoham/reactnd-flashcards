@@ -28,14 +28,10 @@ class NewCard extends Component {
     const { inputQuestion, inputAnswer } = this.state;
     const deckKey = navigation.getParam('deckKey');
 
-    const questions = [
-      {
-        answer: inputAnswer,
-        question: inputQuestion,
-      },
-    ];
-    console.log('OnSubmit KEY', deckKey);
-    console.log('OnSubmit', questions);
+    const questions = {
+      answer: inputAnswer,
+      question: inputQuestion,
+    };
     actions.addCard(deckKey, questions)
       .then(navigation.navigate('Home'));
   }

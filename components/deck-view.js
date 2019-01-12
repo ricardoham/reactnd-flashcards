@@ -7,7 +7,7 @@ class DeckView extends Component {
     const { navigation } = this.props;
     const deckKey = navigation.getParam('deckKey');
     const title = navigation.getParam('title');
-    const questionLength = navigation.getParam('questions');
+    const questions = navigation.getParam('questions');
 
     console.log('my deck key', deckKey);
 
@@ -15,7 +15,7 @@ class DeckView extends Component {
       <View>
         <Card title={title}>
           <Text>
-            {questionLength}
+            {questions.length}
             {' '}
               Cards
           </Text>
@@ -25,7 +25,12 @@ class DeckView extends Component {
               'NewCard', { deckKey },
             )}
           />
-          <Button title="Start Quiz" />
+          <Button
+            title="Start Quiz"
+            onPress={() => navigation.navigate(
+              'QuizView', { questions },
+            )}
+          />
         </Card>
       </View>
     );
