@@ -8,6 +8,21 @@ class QuizView extends Component {
     currentQuestion: 0,
   }
 
+  handleQuestions = () => {
+    const { questionsCorrects } = this.state;
+    this.setState({
+      questionsCorrects: questionsCorrects + 1,
+    });
+  }
+
+  handleCountQuestions = () => {
+    const { currentQuestion } = this.state;
+
+    this.setState({
+      currentQuestion: currentQuestion + 1,
+    });
+  }
+
   renderQuiz = () => {
     const { navigation } = this.props;
     const questions = navigation.getParam('questions');
@@ -15,18 +30,33 @@ class QuizView extends Component {
 
     console.log('Questions ARRAY---', questions);
     console.log('Current Question', currentQuestion);
-
+    if (currentQuestion < questions.length) {
+      return (
+        <View>
+          <View>
+            <Text>
+              {`Question: ${questions[currentQuestion].question}`}
+            </Text>
+          </View>
+          <Button
+            title="Correct!"
+            onPress={() => this.handleCountQuestions()}
+          />
+          <Button
+            title="Incorrect!"
+            onPress={() => this.handleCountQuestions()}
+          />
+        </View>
+      );
+    }
     return (
       <View>
-        <Text>
-          {`Question: ${questions[currentQuestion].question}`}
-        </Text>
+        <Text>Quiz Ended</Text>
       </View>
     );
   }
 
   render() {
-    const { navigation } = this.props;
     return (
       <View>
         <View>
