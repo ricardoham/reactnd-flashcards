@@ -26,10 +26,9 @@ class QuizView extends Component {
   }
 
   restartQuiz = () => {
-    const { currentQuestion } = this.state;
-    this.setState(() => ({
+    this.setState({
       currentQuestion: 0,
-    }));
+    });
   }
 
   renderQuiz = () => {
@@ -64,6 +63,14 @@ class QuizView extends Component {
         <ResultsScreen
           questionsCorrects={questionsCorrects}
           questionsCount={questions.length}
+        />
+        <Button
+          title="Restart The Quiz"
+          onPress={() => this.restartQuiz()}
+        />
+        <Button
+          title="Back to Decks"
+          onPress={() => navigation.navigate('Home')}
         />
       </View>
     );
