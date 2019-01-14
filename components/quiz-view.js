@@ -59,7 +59,6 @@ class QuizView extends Component {
     }
     return (
       <View>
-        <Text>Quiz Ended</Text>
         <ResultsScreen
           questionsCorrects={questionsCorrects}
           questionsCount={questions.length}
