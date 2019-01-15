@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
+import { purpleElegant, purpleElegantDark } from '../utils/colors';
 
 const styles = StyleSheet.create({
-
+  container: {
+    margin: 10,
+    backgroundColor: purpleElegantDark,
+  },
+  quizHeader: {
+    alignItems: 'center',
+  },
 });
 
 class ResultsScreen extends Component {
@@ -12,8 +19,8 @@ class ResultsScreen extends Component {
     const avg = (questionsCorrects / questionsCount) * 100;
 
     return (
-      <View>
-        <Text h2>Quiz Ended!</Text>
+      <View style={styles.container}>
+        <Text h2 style={styles.quizHeader}>Quiz Ended!</Text>
         <Text h4>Results from the last Quiz:</Text>
 
         <View>

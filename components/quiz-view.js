@@ -64,11 +64,14 @@ class QuizView extends Component {
           questionsCount={questions.length}
         />
         <Button
-          title="Restart The Quiz"
+          title="Restart the Quiz"
+          color="#fff"
+          backgroundColor="#00b0ff"
           onPress={() => this.restartQuiz()}
         />
         <Button
           title="Back to Decks"
+          backgroundColor="#ffc400"
           onPress={() => navigation.navigate('Home')}
         />
       </View>
