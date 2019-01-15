@@ -9,8 +9,6 @@ class DeckView extends Component {
     const title = navigation.getParam('title');
     const questions = navigation.getParam('questions');
 
-    console.log('my deck key', deckKey);
-
     return (
       <View>
         <Card title={title}>
