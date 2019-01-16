@@ -24,6 +24,10 @@ const styles = StyleSheet.create({
 });
 
 class DeckView extends Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: `Deck Name:   ${navigation.state.params.title}`,
+  })
+
   render() {
     const { navigation } = this.props;
     const deckKey = navigation.getParam('deckKey');
@@ -34,11 +38,15 @@ class DeckView extends Component {
       <View>
         <Card title={title}>
           <View style={styles.cardContainerBody}>
-            <MaterialCommunityIcons name="cards" size={20} color="#546e7a" />
+            <MaterialCommunityIcons
+              name="cards"
+              size={20}
+              color="#546e7a"
+            />
             <Text style={styles.cardsCount}>
               {questions.length}
               {' '}
-              Cards
+              Card(s)
             </Text>
           </View>
 
