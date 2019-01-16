@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  View, TextInput, Keyboard, KeyboardAvoidingView,
-} from 'react-native';
+import { View } from 'react-native';
 import {
   FormLabel, FormInput, FormValidationMessage, Button,
 } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addDeck } from '../actions/action-decks';
+import styles from './form-buttons';
 
 class NewDeck extends Component {
   state = {
@@ -15,7 +14,7 @@ class NewDeck extends Component {
   }
 
   onSubmit = () => {
-    const { actions, decks } = this.props;
+    const { actions } = this.props;
     const { input } = this.state;
 
     if (!input) {
@@ -33,7 +32,6 @@ class NewDeck extends Component {
     this.setState({
       input: text,
     });
-    console.log('THE INPUTs', this.state.input);
   }
 
   render() {
@@ -42,14 +40,25 @@ class NewDeck extends Component {
     return (
       <View>
         <View>
-          <FormLabel>Whats is the title of the New Deck</FormLabel>
+          <FormLabel
+            labelStyle={styles.labelStyle}
+          >
+          Whats is the title of the New Deck:
+          </FormLabel>
           <FormInput
+            inputStyle={styles.inputStyle}
             onChangeText={this.handleText}
             value={input}
           />
           <Button
             title="SUBMIT"
             onPress={() => this.onSubmit()}
+            buttonStyle={styles.submit}
+          />
+          <Button
+            title="CANCEL"
+            onPress={() => this.onSubmit()}
+            buttonStyle={styles.cancel}
           />
         </View>
       </View>
