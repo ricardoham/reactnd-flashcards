@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addCard } from '../actions/action-decks';
+import styles from './form-buttons';
 
 class NewCard extends Component {
   state = {
@@ -43,26 +44,30 @@ class NewCard extends Component {
     return (
       <View>
         <View>
-          <FormLabel>Question:</FormLabel>
+          <FormLabel labelStyle={styles.labelStyle}>Question:</FormLabel>
           <FormInput
+            inputStyle={styles.inputStyle}
             onChangeText={this.handleTextQuestion}
             value={inputQuestion}
           />
         </View>
         <View>
-          <FormLabel>Answer:</FormLabel>
+          <FormLabel labelStyle={styles.labelStyle}>Answer:</FormLabel>
           <FormInput
+            inputStyle={styles.inputStyle}
             onChangeText={this.handleTextAnswer}
             value={inputAnswer}
           />
         </View>
         <Button
           title="SUBMIT"
+          buttonStyle={styles.submit}
           onPress={() => this.onSubmit()}
         />
         <Button
           title="BACK TO HOME"
           onPress={() => navigation.navigate('Home')}
+          buttonStyle={styles.cancel}
         />
       </View>
     );
