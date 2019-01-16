@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { blue, green } from '../utils/colors';
+import { blue, green, purple } from '../utils/colors';
 
 const styles = StyleSheet.create({
   cardTitle: {
@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
 class DeckView extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: `Deck Name:   ${navigation.state.params.title}`,
+    headerTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: purple,
+    },
   })
 
   render() {

@@ -9,6 +9,7 @@ import NewDeck from './components/new-deck';
 import DeckView from './components/deck-view';
 import NewCard from './components/new-card';
 import QuizView from './components/quiz-view';
+import { green, blue } from './utils/colors';
 
 const TabNavigator = createBottomTabNavigator({
   DECKS: { screen: MainDecks },
@@ -24,15 +25,26 @@ const MainNavigator = createStackNavigator({
   },
   DeckView: {
     screen: DeckView,
-    navigationOptions: {},
   },
   NewCard: {
     screen: NewCard,
-    navigationOptions: {},
+    navigationOptions: {
+      title: 'New Card',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: blue,
+      },
+    },
   },
   QuizView: {
     screen: QuizView,
-    navigationOptions: {},
+    navigationOptions: {
+      title: 'Quiz!',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: green,
+      },
+    },
   },
 });
 
