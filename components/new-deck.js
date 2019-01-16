@@ -57,7 +57,7 @@ class NewDeck extends Component {
           />
           <Button
             title="CANCEL"
-            onPress={() => this.onSubmit()}
+            onPress={() => this.setState({ input: '' })}
             buttonStyle={styles.cancel}
           />
         </View>
