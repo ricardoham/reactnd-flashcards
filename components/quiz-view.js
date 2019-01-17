@@ -11,10 +11,13 @@ const styles = StyleSheet.create({
   questionLabelStyle: {
     fontSize: 24,
     fontWeight: 'bold',
+    alignSelf: 'center',
+    marginBottom: 20,
   },
   questionStyle: {
     fontSize: 20,
     color: greyDark,
+    marginLeft: 10,
   },
 
   cardButtonCorrect: {
@@ -77,7 +80,7 @@ class QuizView extends Component {
         <View>
           <Card>
             <Text style={styles.questionLabelStyle}>
-              Question:
+            Question  🤔
             </Text>
             <Text style={styles.questionStyle}>
               {questions[currentQuestion].question}

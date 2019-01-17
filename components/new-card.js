@@ -51,7 +51,7 @@ class NewCard extends Component {
     return (
       <View>
         <View>
-          <FormLabel labelStyle={styles.labelStyle}>Question:</FormLabel>
+          <FormLabel labelStyle={styles.labelStyle}>🤔 Question:</FormLabel>
           <FormInput
             inputStyle={styles.inputStyle}
             onChangeText={this.handleTextQuestion}
@@ -59,7 +59,7 @@ class NewCard extends Component {
           />
         </View>
         <View>
-          <FormLabel labelStyle={styles.labelStyle}>Answer:</FormLabel>
+          <FormLabel labelStyle={styles.labelStyle}>😱 Answer:</FormLabel>
           <FormInput
             inputStyle={styles.inputStyle}
             onChangeText={this.handleTextAnswer}
