@@ -1,15 +1,34 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
-import { purpleElegant, purpleElegantDark } from '../utils/colors';
+import {
+  purpleElegantDark, greyLight, purple, lightPurple, white, greyDark,
+} from '../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
-    backgroundColor: purpleElegantDark,
+    backgroundColor: lightPurple,
+    height: 350,
   },
   quizHeader: {
-    alignItems: 'center',
+    color: white,
+    alignSelf: 'center',
+  },
+  quizText: {
+    color: white,
+  },
+  quizTextResults: {
+    color: greyDark,
+    fontWeight: 'bold',
+    margin: 5,
+    alignSelf: 'center',
+    paddingTop: 10,
+  },
+  textContainer: {
+    alignSelf: 'center',
+    color: white,
+    margin: 20,
+    justifyContent: 'center',
   },
 });
 
@@ -20,21 +39,24 @@ class ResultsScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <Text h2 style={styles.quizHeader}>Quiz Ended!</Text>
-        <Text h4>Results from the last Quiz:</Text>
-
-        <View>
-          <Text>
+        <View style={styles.textContainer}>
+          <Text h2 style={styles.quizHeader}>Quiz Ended!</Text>
+          <Text h4 style={styles.quizText}>Results from the last Quiz</Text>
+          <View>
+            <Text style={styles.quizTextResults}>
             Percentage of Correct Answers:
-            {' '}
-            {avg}
-            %
-          </Text>
-          <Text>
+              {' '}
+              {avg}
+            % 🚀
+            </Text>
+            <Text style={styles.quizTextResults}>
             Total of Correct Answers:
-            {' '}
-            {questionsCorrects}
-          </Text>
+              {' '}
+              {questionsCorrects}
+              {' '}
+              💪
+            </Text>
+          </View>
         </View>
       </View>
     );

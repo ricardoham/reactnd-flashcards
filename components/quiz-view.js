@@ -1,7 +1,46 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import ResultsScreen from './results-screen';
+
+import {
+  green, red, greyDark, purple, greyLight,
+} from '../utils/colors';
+
+const styles = StyleSheet.create({
+  questionLabelStyle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    marginBottom: 20,
+  },
+  questionStyle: {
+    fontSize: 20,
+    color: greyDark,
+    marginLeft: 10,
+  },
+
+  cardButtonCorrect: {
+    backgroundColor: green,
+    marginBottom: 10,
+    marginTop: 10,
+  },
+
+  cardButtonIncorrect: {
+    backgroundColor: red,
+  },
+
+  resetButton: {
+    margin: 10,
+    backgroundColor: purple,
+  },
+
+  backButton: {
+    margin: 10,
+    backgroundColor: greyDark,
+  },
+});
+
 
 class QuizView extends Component {
   state = {
@@ -36,24 +75,27 @@ class QuizView extends Component {
     const questions = navigation.getParam('questions');
     const { currentQuestion, questionsCorrects } = this.state;
 
-    console.log('Questions ARRAY---', questions);
-    console.log('Current Question', currentQuestion);
     if (currentQuestion < questions.length) {
       return (
         <View>
-          <View>
-            <Text>
-              {`Question: ${questions[currentQuestion].question}`}
+          <Card>
+            <Text style={styles.questionLabelStyle}>
+            Question  🤔
             </Text>
-          </View>
-          <Button
-            title="Correct!"
-            onPress={() => this.handleQuestions()}
-          />
-          <Button
-            title="Incorrect!"
-            onPress={() => this.handleCountQuestions()}
-          />
+            <Text style={styles.questionStyle}>
+              {questions[currentQuestion].question}
+            </Text>
+            <Button
+              title="Correct!"
+              buttonStyle={styles.cardButtonCorrect}
+              onPress={() => this.handleQuestions()}
+            />
+            <Button
+              title="Incorrect!"
+              buttonStyle={styles.cardButtonIncorrect}
+              onPress={() => this.handleCountQuestions()}
+            />
+          </Card>
         </View>
       );
     }
@@ -65,13 +107,12 @@ class QuizView extends Component {
         />
         <Button
           title="Restart the Quiz"
-          color="#fff"
-          backgroundColor="#00b0ff"
+          buttonStyle={styles.resetButton}
           onPress={() => this.restartQuiz()}
         />
         <Button
           title="Back to Decks"
-          backgroundColor="#ffc400"
+          buttonStyle={styles.backButton}
           onPress={() => navigation.navigate('Home')}
         />
       </View>

@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
-import {
-  View, Text, FlatList, TouchableOpacity,
-} from 'react-native';
+import PropTypes from 'prop-types';
+import { FlatList, StyleSheet, Text } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { List, ListItem } from 'react-native-elements';
+import { greenBlue, greenDark } from '../utils/colors';
+
+const styles = StyleSheet.create({
+  listText: {
+    paddingLeft: 10,
+    fontWeight: 'bold',
+    color: greenDark,
+  },
+  listTextSubtitle: {
+    paddingLeft: 10,
+    fontWeight: 'bold',
+    fontSize: 12,
+    color: 'gray',
+  },
+});
 
 class DecksList extends Component {
   render() {
@@ -13,8 +28,20 @@ class DecksList extends Component {
           data={decks}
           renderItem={({ item, index }) => (
             <ListItem
-              title={item.title}
-              subtitle={`${item.questions.length} cards`}
+              leftIcon={(
+                <MaterialCommunityIcons
+                  name="cards-outline"
+                  size={30}
+                  margin={2}
+                  color={greenBlue}
+                />
+              )}
+              title={
+                <Text style={styles.listText}>{item.title}</Text>
+              }
+              subtitle={
+                <Text style={styles.listTextSubtitle}>{`${item.questions.length} cards`}</Text>
+              }
               onPress={() => navigation.navigate(
                 'DeckView', { deckKey: index, title: item.title, questions: item.questions },
               )}
@@ -26,5 +53,10 @@ class DecksList extends Component {
     );
   }
 }
+
+DecksList.propTypes = {
+  decks: PropTypes.array.isRequired,
+  navigation: PropTypes.object,
+};
 
 export default DecksList;
