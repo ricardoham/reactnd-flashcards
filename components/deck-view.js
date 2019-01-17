@@ -5,13 +5,6 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { blue, green, purple } from '../utils/colors';
 
 const styles = StyleSheet.create({
-  cardTitle: {
-    fontSize: 32,
-  },
-  cardButtons: {
-    margin: 15,
-    backgroundColor: blue,
-  },
   cardsCount: {
     color: 'gray',
     justifyContent: 'center',
@@ -20,6 +13,10 @@ const styles = StyleSheet.create({
   cardContainerBody: {
     flexDirection: 'row',
     justifyContent: 'center',
+  },
+  cardButtons: {
+    margin: 15,
+    backgroundColor: blue,
   },
 });
 

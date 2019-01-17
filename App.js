@@ -10,7 +10,7 @@ import NewDeck from './components/new-deck';
 import DeckView from './components/deck-view';
 import NewCard from './components/new-card';
 import QuizView from './components/quiz-view';
-import { green, blue, greenBlue } from './utils/colors';
+import { blue, greenBlue, purple } from './utils/colors';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -73,7 +73,7 @@ const MainNavigator = createStackNavigator({
       title: 'Quiz!',
       headerTintColor: '#fff',
       headerStyle: {
-        backgroundColor: green,
+        backgroundColor: purple,
       },
     },
   },

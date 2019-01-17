@@ -1,8 +1,13 @@
 export const purpleElegant = '#8c9eff';
 export const purpleElegantDark = '#5870cb';
+export const peacefulBlue = '#81d4fa';
 export const blue = '#039be5';
 export const green = '#76d275';
 export const purple = '#512da8';
+export const lightPurple = '#7e57c2';
 export const greenBlue = '#26a69a';
 export const red = '#e53935';
 export const greenDark = '#004d40';
+export const greyDark = '#263238';
+export const greyLight = '#eceff1';
+export const white = '#fff';
