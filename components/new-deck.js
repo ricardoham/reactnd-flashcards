@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import {
-  FormLabel, FormInput, FormValidationMessage, Button,
+  FormLabel, FormInput, Button,
 } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addDeck } from '../actions/action-decks';
@@ -18,7 +18,7 @@ class NewDeck extends Component {
     const { input } = this.state;
 
     if (!input) {
-      console.log('Dont Have input!');
+      Alert.alert('Need to fill with a Deck Title');
     } else {
       const deck = {
         title: input,

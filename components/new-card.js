@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
@@ -29,12 +29,19 @@ class NewCard extends Component {
     const { inputQuestion, inputAnswer } = this.state;
     const deckKey = navigation.getParam('deckKey');
 
-    const questions = {
-      answer: inputAnswer,
-      question: inputQuestion,
-    };
-    actions.addCard(deckKey, questions)
-      .then(navigation.navigate('Home'));
+    if (!inputQuestion) {
+      Alert.alert('Need a Question');
+    } else if (!inputAnswer) {
+      Alert.alert('Need a Answer');
+    } else {
+      const questions = {
+        answer: inputAnswer,
+        question: inputQuestion,
+      };
+
+      actions.addCard(deckKey, questions)
+        .then(navigation.navigate('Home'));
+    }
   }
 
   render() {
