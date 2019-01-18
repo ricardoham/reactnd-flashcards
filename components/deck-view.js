@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+ Animated, View, Text, StyleSheet 
+} from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { blue, green, purple } from '../utils/colors';
@@ -21,6 +23,10 @@ const styles = StyleSheet.create({
 });
 
 class DeckView extends Component {
+  state = {
+
+  }
+
   static navigationOptions = ({ navigation }) => ({
     title: `Deck Name:   ${navigation.state.params.title}`,
     headerTintColor: '#fff',
