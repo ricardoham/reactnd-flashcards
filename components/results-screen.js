@@ -54,7 +54,7 @@ class ResultsScreen extends Component {
               {' '}
               {questionsCorrects}
               {' '}
-              💪
+              🎯
             </Text>
           </View>
         </View>

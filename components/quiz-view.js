@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     backgroundColor: red,
   },
 
+  cardButtonAnswer: {
+    backgroundColor: purple,
+    marginTop: 25,
+  },
+
   resetButton: {
     margin: 10,
     backgroundColor: purple,
@@ -51,6 +56,7 @@ class QuizView extends Component {
   state = {
     questionsCorrects: 0,
     currentQuestion: 0,
+    isPressed: false,
   }
 
   handleQuestions = () => {
@@ -87,10 +93,16 @@ class QuizView extends Component {
     );
   }
 
+  renderShowAnswer = () => {
+    this.setState(prevState => ({
+      isPressed: !prevState.isPressed,
+    }));
+  }
+
   renderQuiz = () => {
     const { navigation } = this.props;
     const questions = navigation.getParam('questions');
-    const { currentQuestion, questionsCorrects } = this.state;
+    const { currentQuestion, questionsCorrects, isPressed } = this.state;
 
     if (currentQuestion < questions.length) {
       return (
@@ -102,6 +114,16 @@ class QuizView extends Component {
             <Text style={styles.questionStyle}>
               {questions[currentQuestion].question}
             </Text>
+            {
+              isPressed
+                ? (<>
+                  <Text style={styles.questionLabelStyle}>
+                      Answer  😱
+                  </Text>
+                  <Text style={styles.questionStyle}>{questions[currentQuestion].answer}</Text>
+                    </>
+                ) : <View />
+            }
             <Button
               title="Correct!"
               buttonStyle={styles.cardButtonCorrect}
@@ -111,6 +133,11 @@ class QuizView extends Component {
               title="Incorrect!"
               buttonStyle={styles.cardButtonIncorrect}
               onPress={() => this.handleCountQuestions()}
+            />
+            <Button
+              title="Show me the Answer!"
+              buttonStyle={styles.cardButtonAnswer}
+              onPress={() => this.renderShowAnswer(questions)}
             />
           </Card>
           {this.renderStepper(questions)}
