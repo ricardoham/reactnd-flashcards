@@ -32,7 +32,7 @@ const TabNavigator = createBottomTabNavigator(
           <MaterialCommunityIcons
             name={iconName}
             size={28}
-            color={greenBlue}
+            color={purple}
           />
         );
       },
@@ -50,7 +50,7 @@ const MainNavigator = createStackNavigator({
       title: 'FlashCards',
       headerTintColor: '#fff',
       headerStyle: {
-        backgroundColor: greenBlue,
+        backgroundColor: purple,
       },
     },
   },
