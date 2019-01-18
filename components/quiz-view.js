@@ -4,7 +4,7 @@ import { Button, Card } from 'react-native-elements';
 import ResultsScreen from './results-screen';
 
 import {
-  green, red, greyDark, purple, greyLight,
+  green, red, greyDark, purple,
 } from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -70,6 +70,18 @@ class QuizView extends Component {
     });
   }
 
+  renderStepper = (questions) => {
+    const { currentQuestion } = this.state;
+
+    return (
+      <View>
+        <Text>
+          {`You are in question number: ${currentQuestion} of ${questions.length}`}
+        </Text>
+      </View>
+    );
+  }
+
   renderQuiz = () => {
     const { navigation } = this.props;
     const questions = navigation.getParam('questions');
@@ -96,6 +108,7 @@ class QuizView extends Component {
               onPress={() => this.handleCountQuestions()}
             />
           </Card>
+          {this.renderStepper(questions)}
         </View>
       );
     }
