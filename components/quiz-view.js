@@ -39,6 +39,11 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: greyDark,
   },
+  stepperStyle: {
+    alignSelf: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });
 
 
@@ -75,8 +80,8 @@ class QuizView extends Component {
 
     return (
       <View>
-        <Text>
-          {`You are in question number: ${currentQuestion} of ${questions.length}`}
+        <Text style={styles.stepperStyle}>
+          {`You are in question number: ${currentQuestion + 1} of ${questions.length} 👏`}
         </Text>
       </View>
     );
