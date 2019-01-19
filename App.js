@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { SharedElementRenderer } from 'react-native-motion';
 import configureStore from './store/config-store';
 
 import MainDecks from './components/main-decks';
@@ -87,7 +88,9 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
-          <AppContainer />
+          <SharedElementRenderer>
+            <AppContainer />
+          </SharedElementRenderer>
         </View>
       </Provider>
     );
