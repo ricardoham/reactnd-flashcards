@@ -88,9 +88,7 @@ export default class App extends Component {
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
-          <SharedElementRenderer>
-            <AppContainer />
-          </SharedElementRenderer>
+          <AppContainer />
         </View>
       </Provider>
     );

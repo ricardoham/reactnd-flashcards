@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View, Text, StyleSheet, Animated,
+} from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SharedElement } from 'react-native-motion';
@@ -19,6 +21,9 @@ const styles = StyleSheet.create({
     margin: 15,
     backgroundColor: blue,
   },
+  viewContainer: {
+    opacity: 0,
+  },
 });
 
 class DeckView extends Component {
@@ -30,47 +35,63 @@ class DeckView extends Component {
     },
   })
 
+  state = {
+    opacity: new Animated.Value(0),
+  }
+
+  componentDidMount() {
+    const { opacity } = this.state;
+    Animated.timing(
+      opacity,
+      {
+        toValue: 1,
+        duration: 5000,
+      },
+    ).start();
+  }
+
   render() {
     const { navigation } = this.props;
+    const { opacity } = this.state;
     const deckKey = navigation.getParam('deckKey');
     const title = navigation.getParam('title');
     const questions = navigation.getParam('questions');
 
     return (
-      <SharedElement>
-        <View>
-          <Card title={title}>
-            <View style={styles.cardContainerBody}>
-              <MaterialCommunityIcons
-                name="cards"
-                size={20}
-                color="#546e7a"
-              />
-              <Text style={styles.cardsCount}>
-                {questions.length}
-                {' '}
+      <Animated.View
+        style={opacity}
+      >
+        <Card title={title}>
+          <View style={styles.cardContainerBody}>
+            <MaterialCommunityIcons
+              name="cards"
+              size={20}
+              color="#546e7a"
+            />
+            <Text style={styles.cardsCount}>
+              {questions.length}
+              {' '}
               Card(s)
-              </Text>
-            </View>
+            </Text>
+          </View>
 
-            <Button
-              title="Add Card"
-              backgroundColor={blue}
-              containerViewStyle={styles.cardButtons}
-              onPress={() => navigation.navigate(
-                'NewCard', { deckKey },
-              )}
-            />
-            <Button
-              title="Start Quiz"
-              backgroundColor={green}
-              onPress={() => navigation.navigate(
-                'QuizView', { questions },
-              )}
-            />
-          </Card>
-        </View>
-      </SharedElement>
+          <Button
+            title="Add Card"
+            backgroundColor={blue}
+            containerViewStyle={styles.cardButtons}
+            onPress={() => navigation.navigate(
+              'NewCard', { deckKey },
+            )}
+          />
+          <Button
+            title="Start Quiz"
+            backgroundColor={green}
+            onPress={() => navigation.navigate(
+              'QuizView', { questions },
+            )}
+          />
+        </Card>
+      </Animated.View>
     );
   }
 }

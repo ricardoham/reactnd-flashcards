@@ -24,35 +24,33 @@ class DecksList extends Component {
   render() {
     const { decks, navigation } = this.props;
     return (
-      <SharedElement>
-        <List>
-          <FlatList
-            data={decks}
-            renderItem={({ item, index }) => (
-              <ListItem
-                leftIcon={(
-                  <MaterialCommunityIcons
-                    name="cards-outline"
-                    size={30}
-                    margin={2}
-                    color={purple}
-                  />
+      <List>
+        <FlatList
+          data={decks}
+          renderItem={({ item, index }) => (
+            <ListItem
+              leftIcon={(
+                <MaterialCommunityIcons
+                  name="cards-outline"
+                  size={30}
+                  margin={2}
+                  color={purple}
+                />
               )}
-                title={
-                  <Text style={styles.listText}>{item.title}</Text>
+              title={
+                <Text style={styles.listText}>{item.title}</Text>
               }
-                subtitle={
-                  <Text style={styles.listTextSubtitle}>{`${item.questions.length} cards`}</Text>
+              subtitle={
+                <Text style={styles.listTextSubtitle}>{`${item.questions.length} cards`}</Text>
               }
-                onPress={() => navigation.navigate(
-                  'DeckView', { deckKey: index, title: item.title, questions: item.questions },
-                )}
-              />
-            )}
-            keyExtractor={item => item.title}
-          />
-        </List>
-      </SharedElement>
+              onPress={() => navigation.navigate(
+                'DeckView', { deckKey: index, title: item.title, questions: item.questions },
+              )}
+            />
+          )}
+          keyExtractor={item => item.title}
+        />
+      </List>
     );
   }
 }
