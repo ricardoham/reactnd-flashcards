@@ -45,7 +45,7 @@ class DeckView extends Component {
       opacity,
       {
         toValue: 1,
-        duration: 5000,
+        duration: 1000,
       },
     ).start();
   }
@@ -59,7 +59,7 @@ class DeckView extends Component {
 
     return (
       <Animated.View
-        style={opacity}
+        style={[styles.viewContainer, { opacity }]}
       >
         <Card title={title}>
           <View style={styles.cardContainerBody}>
