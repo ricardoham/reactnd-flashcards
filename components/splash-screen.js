@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import {
-  View, Image, Animated, Text, StyleSheet,
+  Image, Animated, Text, StyleSheet,
 } from 'react-native';
+import { greyDark } from '../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    opacity: 0,
   },
   containerImg: {
     width: 400,
     height: 400,
-    opacity: 1,
+  },
+  splashText: {
+    fontSize: 20,
+    color: greyDark,
   },
 });
 
@@ -21,37 +26,22 @@ class SplashScreen extends Component {
     opacity: new Animated.Value(0),
   }
 
-  componentWillMount() {
-    const { navigation } = this.props;
-    console.log('Entrou will mount');
-
-    setTimeout(() => {
-      console.log('ALOUT');
-      navigation.navigate(
-        'Home',
-      );
-    }, 1000);
-  }
-
   componentDidMount() {
     const { opacity } = this.state;
     const { navigation } = this.props;
 
-    console.log('Entrou did mount');
-
     Animated.timing(
       opacity,
       {
-        toValue: 0,
+        toValue: 1,
         duration: 1000,
       },
     ).start();
     setTimeout(() => {
-      console.log('ALOUT');
       navigation.navigate(
         'Home',
       );
-    }, 1000);
+    }, 2300);
   }
 
 
@@ -59,12 +49,13 @@ class SplashScreen extends Component {
     const { opacity } = this.state;
 
     return (
-      <View style={styles.container}>
+      <Animated.View style={[styles.container, { opacity }]}>
         <Image
           style={styles.containerImg}
           source={require('../assets/udacity.png')}
         />
-      </View>
+        <Text style={styles.splashText}>Flash Cards</Text>
+      </Animated.View>
     );
   }
 }

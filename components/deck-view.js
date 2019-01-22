@@ -45,7 +45,7 @@ class DeckView extends Component {
       opacity,
       {
         toValue: 1,
-        duration: 1000,
+        duration: 800,
       },
     ).start();
   }
