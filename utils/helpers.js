@@ -1,11 +1,17 @@
-import React, { Component } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { Notifications, Permissions } from 'expo';
 import { NOTIFICATION_KEY } from './constants';
 
 function createNotification() {
   return {
-    title: 'Alou',
+    title: 'Lets get to study 🤘',
+    body: 'Dont forgot to study dude! 👍',
+    android: {
+      sound: true,
+      priority: 'high',
+      sitcky: false,
+      vibrate: true,
+    },
   };
 }
 
@@ -34,4 +40,10 @@ export function setLocalNotification() {
           });
       }
     });
+}
+
+export function dailyNotifications() {
+  return {
+    today: 'Dont forgot to study today! 😉',
+  };
 }
