@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
-import {
-  purpleElegantDark, greyLight, purple, lightPurple, white, greyDark,
-} from '../utils/colors';
+import { lightPurple, white, greyDark } from '../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -54,7 +52,7 @@ class ResultsScreen extends Component {
               {' '}
               {questionsCorrects}
               {' '}
-              💪
+              🎯
             </Text>
           </View>
         </View>

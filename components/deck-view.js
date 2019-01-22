@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {
+  View, Text, StyleSheet, Animated,
+} from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { SharedElement } from 'react-native-motion';
 import { blue, green, purple } from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -18,6 +21,9 @@ const styles = StyleSheet.create({
     margin: 15,
     backgroundColor: blue,
   },
+  viewContainer: {
+    opacity: 0,
+  },
 });
 
 class DeckView extends Component {
@@ -29,14 +35,32 @@ class DeckView extends Component {
     },
   })
 
+  state = {
+    opacity: new Animated.Value(0),
+  }
+
+  componentDidMount() {
+    const { opacity } = this.state;
+    Animated.timing(
+      opacity,
+      {
+        toValue: 1,
+        duration: 800,
+      },
+    ).start();
+  }
+
   render() {
     const { navigation } = this.props;
+    const { opacity } = this.state;
     const deckKey = navigation.getParam('deckKey');
     const title = navigation.getParam('title');
     const questions = navigation.getParam('questions');
 
     return (
-      <View>
+      <Animated.View
+        style={[styles.viewContainer, { opacity }]}
+      >
         <Card title={title}>
           <View style={styles.cardContainerBody}>
             <MaterialCommunityIcons
@@ -67,7 +91,7 @@ class DeckView extends Component {
             )}
           />
         </Card>
-      </View>
+      </Animated.View>
     );
   }
 }

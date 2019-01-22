@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, StyleSheet, Text } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { SharedElement } from 'react-native-motion';
 import { List, ListItem } from 'react-native-elements';
-import { greenBlue, greenDark } from '../utils/colors';
+import { purple, greyDark } from '../utils/colors';
 
 const styles = StyleSheet.create({
   listText: {
     paddingLeft: 10,
     fontWeight: 'bold',
-    color: greenDark,
+    color: greyDark,
   },
   listTextSubtitle: {
     paddingLeft: 10,
@@ -33,7 +34,7 @@ class DecksList extends Component {
                   name="cards-outline"
                   size={30}
                   margin={2}
-                  color={greenBlue}
+                  color={purple}
                 />
               )}
               title={

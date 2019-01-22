@@ -4,7 +4,7 @@ import { Button, Card } from 'react-native-elements';
 import ResultsScreen from './results-screen';
 
 import {
-  green, red, greyDark, purple, greyLight,
+  green, red, greyDark, purple,
 } from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -30,6 +30,11 @@ const styles = StyleSheet.create({
     backgroundColor: red,
   },
 
+  cardButtonAnswer: {
+    backgroundColor: purple,
+    marginTop: 25,
+  },
+
   resetButton: {
     margin: 10,
     backgroundColor: purple,
@@ -39,6 +44,11 @@ const styles = StyleSheet.create({
     margin: 10,
     backgroundColor: greyDark,
   },
+  stepperStyle: {
+    alignSelf: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });
 
 
@@ -46,6 +56,7 @@ class QuizView extends Component {
   state = {
     questionsCorrects: 0,
     currentQuestion: 0,
+    isPressed: false,
   }
 
   handleQuestions = () => {
@@ -70,10 +81,28 @@ class QuizView extends Component {
     });
   }
 
+  renderStepper = (questions) => {
+    const { currentQuestion } = this.state;
+
+    return (
+      <View>
+        <Text style={styles.stepperStyle}>
+          {`You are in question number: ${currentQuestion + 1} of ${questions.length} 👏`}
+        </Text>
+      </View>
+    );
+  }
+
+  renderShowAnswer = () => {
+    this.setState(prevState => ({
+      isPressed: !prevState.isPressed,
+    }));
+  }
+
   renderQuiz = () => {
     const { navigation } = this.props;
     const questions = navigation.getParam('questions');
-    const { currentQuestion, questionsCorrects } = this.state;
+    const { currentQuestion, questionsCorrects, isPressed } = this.state;
 
     if (currentQuestion < questions.length) {
       return (
@@ -85,6 +114,16 @@ class QuizView extends Component {
             <Text style={styles.questionStyle}>
               {questions[currentQuestion].question}
             </Text>
+            {
+              isPressed
+                ? (<>
+                  <Text style={styles.questionLabelStyle}>
+                      Answer  😱
+                  </Text>
+                  <Text style={styles.questionStyle}>{questions[currentQuestion].answer}</Text>
+                    </>
+                ) : <View />
+            }
             <Button
               title="Correct!"
               buttonStyle={styles.cardButtonCorrect}
@@ -95,7 +134,13 @@ class QuizView extends Component {
               buttonStyle={styles.cardButtonIncorrect}
               onPress={() => this.handleCountQuestions()}
             />
+            <Button
+              title="Show me the Answer!"
+              buttonStyle={styles.cardButtonAnswer}
+              onPress={() => this.renderShowAnswer(questions)}
+            />
           </Card>
+          {this.renderStepper(questions)}
         </View>
       );
     }

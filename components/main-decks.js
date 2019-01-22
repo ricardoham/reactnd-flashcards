@@ -9,6 +9,7 @@ import DecksList from './decks-list';
 class MainDecks extends Component {
   componentDidMount() {
     const { actions } = this.props;
+
     actions.getDecks();
   }
 
