@@ -46,7 +46,12 @@ const TabNavigator = createBottomTabNavigator(
 );
 
 const MainNavigator = createStackNavigator({
-  SplashScreen: { screen: SplashScreen },
+  SplashScreen: {
+    screen: SplashScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
   Home: {
     screen: TabNavigator,
     navigationOptions: {
