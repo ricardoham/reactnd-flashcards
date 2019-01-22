@@ -11,6 +11,7 @@ import NewDeck from './components/new-deck';
 import DeckView from './components/deck-view';
 import NewCard from './components/new-card';
 import QuizView from './components/quiz-view';
+import SplashScreen from './components/splash-screen';
 import { blue, greenBlue, purple } from './utils/colors';
 
 const TabNavigator = createBottomTabNavigator(
@@ -45,6 +46,7 @@ const TabNavigator = createBottomTabNavigator(
 );
 
 const MainNavigator = createStackNavigator({
+  SplashScreen: { screen: SplashScreen },
   Home: {
     screen: TabNavigator,
     navigationOptions: {
@@ -53,6 +55,7 @@ const MainNavigator = createStackNavigator({
       headerStyle: {
         backgroundColor: purple,
       },
+      headerLeft: null,
     },
   },
   DeckView: {

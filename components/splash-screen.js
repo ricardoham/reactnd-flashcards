@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {
   View, Image, Animated, Text, StyleSheet,
 } from 'react-native';
-import image from '../assets/udacity.png';
-
 
 const styles = StyleSheet.create({
   container: {
@@ -23,8 +21,23 @@ class SplashScreen extends Component {
     opacity: new Animated.Value(0),
   }
 
+  componentWillMount() {
+    const { navigation } = this.props;
+    console.log('Entrou will mount');
+
+    setTimeout(() => {
+      console.log('ALOUT');
+      navigation.navigate(
+        'Home',
+      );
+    }, 1000);
+  }
+
   componentDidMount() {
     const { opacity } = this.state;
+    const { navigation } = this.props;
+
+    console.log('Entrou did mount');
 
     Animated.timing(
       opacity,
@@ -33,7 +46,14 @@ class SplashScreen extends Component {
         duration: 1000,
       },
     ).start();
+    setTimeout(() => {
+      console.log('ALOUT');
+      navigation.navigate(
+        'Home',
+      );
+    }, 1000);
   }
+
 
   render() {
     const { opacity } = this.state;
