@@ -47,3 +47,8 @@ export function dailyNotifications() {
     today: 'Dont forgot to study today! 😉',
   };
 }
+
+export function clearLocalNotification() {
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync());
+}

@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { SharedElementRenderer } from 'react-native-motion';
 import configureStore from './store/config-store';
 
 import MainDecks from './components/main-decks';
@@ -12,7 +11,8 @@ import DeckView from './components/deck-view';
 import NewCard from './components/new-card';
 import QuizView from './components/quiz-view';
 import SplashScreen from './components/splash-screen';
-import { blue, greenBlue, purple } from './utils/colors';
+import { blue, purple } from './utils/colors';
+import { setLocalNotification } from './utils/helpers';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -91,6 +91,10 @@ const MainNavigator = createStackNavigator({
 const AppContainer = createAppContainer(MainNavigator);
 
 export default class App extends Component {
+  componentDidMount() {
+    setLocalNotification();
+  }
+
   render() {
     const store = configureStore();
     return (
