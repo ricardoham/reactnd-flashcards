@@ -7,6 +7,7 @@ import {
 import { bindActionCreators } from 'redux';
 import { addDeck } from '../actions/action-decks';
 import styles from './form-buttons';
+import { dailyNotifications } from '../utils/helpers';
 
 class NewDeck extends Component {
   state = {
@@ -25,6 +26,7 @@ class NewDeck extends Component {
         questions: [],
       };
       actions.addDeck(deck);
+      dailyNotifications();
     }
   }
 
