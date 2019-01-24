@@ -12,6 +12,9 @@ function createNotification() {
       sitcky: false,
       vibrate: true,
     },
+    ios: {
+      sound: true,
+    },
   };
 }
 
