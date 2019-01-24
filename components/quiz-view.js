@@ -6,6 +6,7 @@ import ResultsScreen from './results-screen';
 import {
   green, red, greyDark, purple,
 } from '../utils/colors';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 const styles = StyleSheet.create({
   questionLabelStyle: {
@@ -79,6 +80,8 @@ class QuizView extends Component {
     this.setState({
       currentQuestion: 0,
     });
+    clearLocalNotification()
+      .then(setLocalNotification);
   }
 
   renderStepper = (questions) => {
@@ -158,7 +161,10 @@ class QuizView extends Component {
         <Button
           title="Back to Decks"
           buttonStyle={styles.backButton}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Home')
+            .then(clearLocalNotification()
+              .then(setLocalNotification))
+        }
         />
       </View>
     );

@@ -5,6 +5,7 @@ import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addCard } from '../actions/action-decks';
 import styles from './form-buttons';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class NewCard extends Component {
   state = {
@@ -41,6 +42,8 @@ class NewCard extends Component {
 
       actions.addCard(deckKey, questions)
         .then(navigation.navigate('Home'));
+      clearLocalNotification()
+        .then(setLocalNotification);
     }
   }
 
