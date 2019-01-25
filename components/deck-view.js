@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
   viewContainer: {
     opacity: 0,
   },
+  touchableView: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 5,
+  },
 });
 
 class DeckView extends Component {
@@ -48,6 +53,29 @@ class DeckView extends Component {
         duration: 800,
       },
     ).start();
+  }
+
+  renderExtraButtons = () => {
+    const { navigation } = this.props;
+
+    return (
+      <View style={styles.touchableView}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('DeckEdit')}
+        >
+          <AntDesign
+            name="edit"
+            size={30}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <AntDesign
+            name="delete"
+            size={30}
+          />
+        </TouchableOpacity>
+      </View>
+    );
   }
 
   render() {
@@ -90,21 +118,7 @@ class DeckView extends Component {
               'QuizView', { questions },
             )}
           />
-          <View>
-            <TouchableOpacity>
-              <AntDesign
-                name="edit"
-                size={30}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <AntDesign
-                name="delete"
-                size={30}
-              />
-            </TouchableOpacity>
-          </View>
-
+          {this.renderExtraButtons()}
         </Card>
       </Animated.View>
     );
