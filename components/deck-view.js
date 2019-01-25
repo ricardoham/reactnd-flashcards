@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {
-  View, Text, StyleSheet, Animated,
+  View, Text, StyleSheet, Animated, TouchableOpacity,
 } from 'react-native';
 import { Card, Button } from 'react-native-elements';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { SharedElement } from 'react-native-motion';
 import { blue, green, purple } from '../utils/colors';
 
@@ -90,6 +90,12 @@ class DeckView extends Component {
               'QuizView', { questions },
             )}
           />
+          <TouchableOpacity>
+            <AntDesign
+              name="edit"
+              size={30}
+            />
+          </TouchableOpacity>
         </Card>
       </Animated.View>
     );
