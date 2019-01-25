@@ -11,6 +11,7 @@ import DeckView from './components/deck-view';
 import NewCard from './components/new-card';
 import QuizView from './components/quiz-view';
 import SplashScreen from './components/splash-screen';
+import DeckEdit from './components/deck-edit';
 import { blue, purple } from './utils/colors';
 import { setLocalNotification } from './utils/helpers';
 
@@ -80,6 +81,15 @@ const MainNavigator = createStackNavigator({
     screen: QuizView,
     navigationOptions: {
       title: 'Quiz!',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: purple,
+      },
+    },
+  },
+  DeckEdit: {
+    screen: DeckEdit,
+    navigationOptions: {
       headerTintColor: '#fff',
       headerStyle: {
         backgroundColor: purple,
