@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import {
   View, Text, StyleSheet, Animated, TouchableOpacity,
 } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import { Card, Button, Icon } from 'react-native-elements';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { SharedElement } from 'react-native-motion';
-import { blue, green, purple } from '../utils/colors';
+import {
+  blue, green, purple, red,
+} from '../utils/colors';
 
 const styles = StyleSheet.create({
   cardsCount: {
@@ -25,9 +27,13 @@ const styles = StyleSheet.create({
     opacity: 0,
   },
   touchableView: {
-    flex: 1,
     flexDirection: 'row',
-    marginTop: 5,
+    marginTop: 50,
+  },
+  extraButton: {
+    width: 100,
+    height: 7,
+    borderRadius: 3,
   },
 });
 
@@ -60,20 +66,27 @@ class DeckView extends Component {
 
     return (
       <View style={styles.touchableView}>
-        <TouchableOpacity
+        {/* <Text>Edit Deck</Text>
+        <Icon
+          name="edit"
+          size={23}
           onPress={() => navigation.navigate('DeckEdit')}
-        >
-          <AntDesign
-            name="edit"
-            size={30}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <AntDesign
-            name="delete"
-            size={30}
-          />
-        </TouchableOpacity>
+        />
+        <Text>Remove Deck</Text>
+        <Icon
+          size={23}
+          name="delete"
+          color="#517fa4"
+        /> */}
+        <Button
+          title="Edit Deck"
+          rightIcon={{ name: 'edit' }}
+          buttonStyle={styles.extraButton}
+        />
+        <Button
+          title="Remove Deck"
+          rightIcon={{ name: 'delete' }}
+        />
       </View>
     );
   }
