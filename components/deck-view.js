@@ -90,12 +90,21 @@ class DeckView extends Component {
               'QuizView', { questions },
             )}
           />
-          <TouchableOpacity>
-            <AntDesign
-              name="edit"
-              size={30}
-            />
-          </TouchableOpacity>
+          <View>
+            <TouchableOpacity>
+              <AntDesign
+                name="edit"
+                size={30}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <AntDesign
+                name="delete"
+                size={30}
+              />
+            </TouchableOpacity>
+          </View>
+
         </Card>
       </Animated.View>
     );
