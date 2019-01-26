@@ -82,10 +82,15 @@ class DeckView extends Component {
           title="Edit Deck"
           rightIcon={{ name: 'edit' }}
           buttonStyle={styles.extraButton}
+          onPress={() => navigation.navigate('DeckEdit')}
         />
         <Button
           title="Remove Deck"
           rightIcon={{ name: 'delete' }}
+        />
+        <Button
+          title="Edit Cards"
+          onPress={() => navigation.navigate('DeckEdit')}
         />
       </View>
     );
