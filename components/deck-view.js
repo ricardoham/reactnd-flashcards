@@ -4,7 +4,6 @@ import {
 } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
-import { SharedElement } from 'react-native-motion';
 import {
   blue, green, purple, red,
 } from '../utils/colors';
@@ -63,34 +62,30 @@ class DeckView extends Component {
 
   renderExtraButtons = () => {
     const { navigation } = this.props;
+    const title = navigation.getParam('title');
+    const questions = navigation.getParam('questions');
 
     return (
       <View style={styles.touchableView}>
-        {/* <Text>Edit Deck</Text>
-        <Icon
-          name="edit"
-          size={23}
-          onPress={() => navigation.navigate('DeckEdit')}
-        />
-        <Text>Remove Deck</Text>
-        <Icon
-          size={23}
-          name="delete"
-          color="#517fa4"
-        /> */}
         <Button
           title="Edit Deck"
           rightIcon={{ name: 'edit' }}
           buttonStyle={styles.extraButton}
-          onPress={() => navigation.navigate('DeckEdit')}
-        />
-        <Button
-          title="Remove Deck"
-          rightIcon={{ name: 'delete' }}
+          onPress={() => navigation.navigate(
+            'DeckEdit', { title },
+          )}
         />
         <Button
           title="Edit Cards"
-          onPress={() => navigation.navigate('DeckEdit')}
+          buttonStyle={styles.extraButton}
+          onPress={() => navigation.navigate(
+            'CardsList', { questions },
+          )}
+        />
+        <Button
+          title="Remove Deck"
+          buttonStyle={styles.extraButton}
+          rightIcon={{ name: 'delete' }}
         />
       </View>
     );

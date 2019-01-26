@@ -12,9 +12,10 @@ import NewCard from './components/new-card';
 import QuizView from './components/quiz-view';
 import SplashScreen from './components/splash-screen';
 import DeckEdit from './components/deck-edit';
+import CardsList from './components/cards-list';
+
 import { blue, purple } from './utils/colors';
 import { setLocalNotification } from './utils/helpers';
-import CardsList from './components/cards-list';
 
 const TabNavigator = createBottomTabNavigator(
   {
@@ -89,7 +90,7 @@ const MainNavigator = createStackNavigator({
     },
   },
   DeckEdit: {
-    screen: DeckEdit,
+    screen: NewDeck,
     navigationOptions: {
       headerTintColor: '#fff',
       headerStyle: {

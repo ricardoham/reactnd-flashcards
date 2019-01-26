@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 class CardsList extends Component {
-  render() {
-    return(
-
-    );
-  }
+  // render() {
+  //   return (
+  //     <View>
+  //       <Text>
+  //         Works
+  //       </Text>
+  //     </View>
+  //   );
+  // }
 }
 
 export default CardsList;
