@@ -10,17 +10,30 @@ import styles from './form-buttons';
 import { dailyNotifications } from '../utils/helpers';
 
 class NewDeck extends Component {
-  state = {
-    input: '',
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    const title = navigation.getParam('title');
+
+    if (!title) {
+      this.state = {
+        input: '',
+      };
+    }
+    this.state = {
+      input: title,
+    };
   }
 
   onSubmit = () => {
-    const { actions } = this.props;
+    const { actions, navigation } = this.props;
     const { input } = this.state;
+    const title = navigation.getParam('title');
+
 
     if (!input) {
       Alert.alert('Need to fill with a Deck Title');
-    } else {
+    } else if (!title) {
       const deck = {
         title: input,
         questions: [],
