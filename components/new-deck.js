@@ -38,9 +38,11 @@ class NewDeck extends Component {
         title: input,
         questions: [],
       };
-      actions.addDeck(deck);
+      actions.addDeck(deck)
+        .then(navigation.navigate('Home'));
       dailyNotifications();
     }
+    console.log('Edit Deck!');
   }
 
   handleText = (text) => {
