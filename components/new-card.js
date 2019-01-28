@@ -8,9 +8,22 @@ import styles from './form-buttons';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class NewCard extends Component {
-  state = {
-    inputQuestion: '',
-    inputAnswer: '',
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    const question = navigation.getParam('question');
+    const answer = navigation.getParam('answer');
+
+    if (!question && !answer) {
+      this.state = {
+        inputQuestion: '',
+        inputAnswer: '',
+      };
+    }
+    this.state = {
+      inputQuestion: question,
+      inputAnswer: answer,
+    };
   }
 
   handleTextQuestion = (textQuestion) => {
@@ -27,6 +40,9 @@ class NewCard extends Component {
 
   onSubmit = () => {
     const { actions, navigation } = this.props;
+    const question = navigation.getParam('question');
+    const answer = navigation.getParam('answer');
+
     const { inputQuestion, inputAnswer } = this.state;
     const deckKey = navigation.getParam('deckKey');
 
@@ -34,7 +50,7 @@ class NewCard extends Component {
       Alert.alert('Need a Question');
     } else if (!inputAnswer) {
       Alert.alert('Need a Answer');
-    } else {
+    } else if (!question && !answer) {
       const questions = {
         answer: inputAnswer,
         question: inputQuestion,

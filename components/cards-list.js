@@ -40,11 +40,11 @@ class CardsList extends Component {
                 <Text style={styles.listText}>{item.question}</Text>
               }
               onPress={() => navigation.navigate(
-                'DeckView', { deckKey: index, title: item.title, questions: item.questions },
+                'NewCard', { carKey: index, question: item.question, answer: item.answer },
               )}
             />
           )}
-          keyExtractor={item => item.title}
+          keyExtractor={item => item.question}
         />
       </List>
     );
