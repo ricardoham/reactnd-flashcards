@@ -15,3 +15,7 @@ export const addCard = (deckKey, question) => AsyncStorage.getItem(DECK_STORAGE_
     data[deckKey].questions.push(question);
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
   });
+
+export const editDeck = title => AsyncStorage.getItemD(DECK_STORAGE_KEY)
+  .then(JSON.parse)
+  .then(data => AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data)));
