@@ -39,10 +39,11 @@ export function addCard(deckKey, question) {
   );
 }
 
-export function editDeck(title) {
+export function editDeck(deckKey, title) {
   return dispatch => (
     decksAPI.editDeck(title).then(() => dispatch({
       type: EDIT_DECK_SUCCESS,
+      deckKey,
       title,
     }))
       .catch(error => dispatch({

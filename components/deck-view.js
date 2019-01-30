@@ -64,6 +64,7 @@ class DeckView extends Component {
     const { navigation } = this.props;
     const title = navigation.getParam('title');
     const questions = navigation.getParam('questions');
+    const deckKey = navigation.getParam('deckKey');
 
     return (
       <View style={styles.touchableView}>
@@ -72,7 +73,7 @@ class DeckView extends Component {
           rightIcon={{ name: 'edit' }}
           buttonStyle={styles.extraButton}
           onPress={() => navigation.navigate(
-            'DeckEdit', { title },
+            'DeckEdit', { title, deckKey },
           )}
         />
         <Button

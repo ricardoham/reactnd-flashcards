@@ -19,6 +19,13 @@ export const addCard = (deckKey, question) => AsyncStorage.getItem(DECK_STORAGE_
 export const editDeck = (deckKey, title) => AsyncStorage.getItem(DECK_STORAGE_KEY)
   .then(JSON.parse)
   .then((data) => {
+    console.log('---data', data);
     data[deckKey].title = title;
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
   });
+
+// export const editCard = (questionKey, answer, question) => AsyncStorage.getItem(DECK_STORAGE_KEY)
+//   .then(JSON.parse)
+//   .then((data) => {
+//     data[questionKey];
+//   });

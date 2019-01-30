@@ -5,7 +5,7 @@ import {
   FormLabel, FormInput, Button,
 } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
-import { addDeck } from '../actions/action-decks';
+import { addDeck, editDeck } from '../actions/action-decks';
 import styles from './form-buttons';
 import { dailyNotifications } from '../utils/helpers';
 
@@ -29,7 +29,7 @@ class NewDeck extends Component {
     const { actions, navigation } = this.props;
     const { input } = this.state;
     const title = navigation.getParam('title');
-
+    const deckKey = navigation.getParam('deckKey');
 
     if (!input) {
       Alert.alert('Need to fill with a Deck Title');
@@ -41,8 +41,12 @@ class NewDeck extends Component {
       actions.addDeck(deck)
         .then(navigation.navigate('Home'));
       dailyNotifications();
+    } else if (title) {
+      console.log('Entrei!', title);
+      console.log(input);
+      actions.editDeck(deckKey, input)
+        .then(navigation.navigate('Home'));
     }
-    console.log('Edit Deck!');
   }
 
   handleText = (text) => {
@@ -88,7 +92,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ addDeck }, dispatch),
+  actions: bindActionCreators({ addDeck, editDeck }, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewDeck);

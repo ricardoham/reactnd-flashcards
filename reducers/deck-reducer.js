@@ -1,5 +1,6 @@
 import {
-  FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS, ADD_DECK_FAILURE, ADD_CARD_SUCCESS, ADD_CARD_FAILURE, EDIT_DECK_SUCCESS,
+  FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS, ADD_DECK_FAILURE,
+  ADD_CARD_SUCCESS, ADD_CARD_FAILURE, EDIT_DECK_SUCCESS,
 } from '../actions/action-types';
 
 const INITIAL_STATE = {};
@@ -37,9 +38,11 @@ export default function (state = INITIAL_STATE, action) {
       };
     case EDIT_DECK_SUCCESS:
       const editedDeck = [...state.decksData];
-      editedDeck;
+      editedDeck[action.deckKey].title = action.title;
+      console.log('EditDEck', editedDeck);
       return {
         ...state,
+        decksData: editedDeck,
       };
     default:
       return state;
