@@ -7,6 +7,8 @@ const INITIAL_STATE = {};
 export default function (state = INITIAL_STATE, action) {
   switch (action.type) {
     case FETCH_ALL_DECKS_SUCCESS:
+      console.log('ALL DECK', action);
+
       return {
         ...state,
         decksData: action.payload,
