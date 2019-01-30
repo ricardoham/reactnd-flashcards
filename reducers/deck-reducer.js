@@ -1,5 +1,5 @@
 import {
-  FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS, ADD_DECK_FAILURE, ADD_CARD_SUCCESS, ADD_CARD_FAILURE,
+  FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS, ADD_DECK_FAILURE, ADD_CARD_SUCCESS, ADD_CARD_FAILURE, EDIT_DECK_SUCCESS,
 } from '../actions/action-types';
 
 const INITIAL_STATE = {};
@@ -32,6 +32,12 @@ export default function (state = INITIAL_STATE, action) {
       return {
         ...state,
         error: action.error,
+      };
+    case EDIT_DECK_SUCCESS:
+      const editedDeck = [...state.decksData];
+      editedDeck;
+      return {
+        ...state,
       };
     default:
       return state;
