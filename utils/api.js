@@ -29,3 +29,10 @@ export const editCard = (deckKey, questionKey, question) => AsyncStorage.getItem
     data[deckKey].questions[questionKey] = question;
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
   });
+
+export const removeDeck = deckKey => AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then(JSON.parse)
+  .then((data) => {
+    const deleteDeck = data.filter(i => i.index !== deckKey);
+    AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(deleteDeck));
+  });
