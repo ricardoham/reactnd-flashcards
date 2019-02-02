@@ -42,8 +42,6 @@ class NewDeck extends Component {
         .then(navigation.navigate('Home'));
       dailyNotifications();
     } else if (title) {
-      console.log('Entrei!', title);
-      console.log(input);
       actions.editDeck(deckKey, input)
         .then(navigation.navigate('Home'));
     }
@@ -56,7 +54,9 @@ class NewDeck extends Component {
   }
 
   render() {
+    const { navigation } = this.props;
     const { input } = this.state;
+    const title = navigation.getParam('title');
 
     return (
       <View>
@@ -64,7 +64,10 @@ class NewDeck extends Component {
           <FormLabel
             labelStyle={styles.labelStyle}
           >
-          Whats is the title of the New Deck:
+            {title
+              ? 'Edit the Deck Title:'
+              : 'Whats is the title of the New Deck:'
+            }
           </FormLabel>
           <FormInput
             inputStyle={styles.inputStyle}
