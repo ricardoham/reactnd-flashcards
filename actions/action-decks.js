@@ -55,3 +55,18 @@ export function editDeck(deckKey, title) {
       }))
   );
 }
+
+export function editCard(deckKey, carKey, question) {
+  return dispatch => (
+    decksAPI.editCard(carKey, question).then(() => dispatch({
+      type: EDIT_DECK_SUCCESS,
+      deckKey,
+      carKey,
+      question,
+    }))
+      .catch(error => dispatch({
+        type: EDIT_DECK_FAILURE,
+        error,
+      }))
+  );
+}

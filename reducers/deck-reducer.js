@@ -1,6 +1,7 @@
+import { cloneDeep } from 'lodash';
 import {
   FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS, ADD_DECK_FAILURE,
-  ADD_CARD_SUCCESS, ADD_CARD_FAILURE, EDIT_DECK_SUCCESS,
+  ADD_CARD_SUCCESS, ADD_CARD_FAILURE, EDIT_DECK_SUCCESS, EDIT_CARD_SUCCESS,
 } from '../actions/action-types';
 
 const INITIAL_STATE = {};
@@ -41,6 +42,9 @@ export default function (state = INITIAL_STATE, action) {
         ...state,
         decksData: editedDeck,
       };
+    case EDIT_CARD_SUCCESS:
+      const editCard = cloneDeep([...state.decksData]);
+      editCard[action.deckKey].questions[action.cardKey] = action.question;
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import { View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
-import { addCard } from '../actions/action-decks';
+import { addCard, editCard } from '../actions/action-decks';
 import styles from './form-buttons';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
@@ -39,19 +39,21 @@ class NewCard extends Component {
   }
 
   onSubmit = () => {
+    let questions = {};
     const { actions, navigation } = this.props;
     const question = navigation.getParam('question');
     const answer = navigation.getParam('answer');
 
     const { inputQuestion, inputAnswer } = this.state;
     const deckKey = navigation.getParam('deckKey');
+    const carKey = navigation.getParam('carKey');
 
     if (!inputQuestion) {
       Alert.alert('Need a Question');
     } else if (!inputAnswer) {
       Alert.alert('Need a Answer');
     } else if (!question && !answer) {
-      const questions = {
+      questions = {
         answer: inputAnswer,
         question: inputQuestion,
       };
@@ -60,12 +62,22 @@ class NewCard extends Component {
         .then(navigation.navigate('Home'));
       clearLocalNotification()
         .then(setLocalNotification);
+    } else if (question && answer) {
+      questions = {
+        answer: inputAnswer,
+        question: inputQuestion,
+      };
+
+      actions.editCard(carKey, questions);
     }
   }
 
   render() {
     const { navigation } = this.props;
     const { inputQuestion, inputAnswer } = this.state;
+    const carKey = navigation.getParam('carKey');
+
+    console.log('---CardKey', carKey);
 
     return (
       <View>
@@ -105,7 +117,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ addCard }, dispatch),
+  actions: bindActionCreators({ addCard, editCard }, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewCard);
