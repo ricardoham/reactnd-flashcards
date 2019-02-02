@@ -80,7 +80,7 @@ class DeckView extends Component {
           title="Edit Cards"
           buttonStyle={styles.extraButton}
           onPress={() => navigation.navigate(
-            'CardsList', { questions },
+            'CardsList', { deckKey, questions },
           )}
         />
         <Button

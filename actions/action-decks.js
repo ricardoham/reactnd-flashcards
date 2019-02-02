@@ -2,7 +2,8 @@ import {
   FETCH_ALL_DECKS_SUCCESS, ADD_DECK_SUCCESS,
   ADD_DECK_FAILURE, ADD_CARD_SUCCESS,
   ADD_CARD_FAILURE, EDIT_DECK_SUCCESS,
-  EDIT_DECK_FAILURE,
+  EDIT_DECK_FAILURE, EDIT_CARD_SUCCESS,
+  EDIT_CARD_FAILURE,
 } from './action-types';
 import * as decksAPI from '../utils/api';
 
@@ -56,16 +57,16 @@ export function editDeck(deckKey, title) {
   );
 }
 
-export function editCard(deckKey, carKey, question) {
+export function editCard(deckKey, cardKey, question) {
   return dispatch => (
-    decksAPI.editCard(carKey, question).then(() => dispatch({
-      type: EDIT_DECK_SUCCESS,
+    decksAPI.editCard(cardKey, question).then(() => dispatch({
+      type: EDIT_CARD_SUCCESS,
       deckKey,
-      carKey,
+      cardKey,
       question,
     }))
       .catch(error => dispatch({
-        type: EDIT_DECK_FAILURE,
+        type: EDIT_CARD_FAILURE,
         error,
       }))
   );

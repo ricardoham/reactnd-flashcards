@@ -22,6 +22,8 @@ class CardsList extends Component {
   render() {
     const { navigation } = this.props;
     const questions = navigation.getParam('questions');
+    const deckKey = navigation.getParam('deckKey');
+
     return (
       <List>
         <FlatList
@@ -40,7 +42,9 @@ class CardsList extends Component {
                 <Text style={styles.listText}>{item.question}</Text>
               }
               onPress={() => navigation.navigate(
-                'NewCard', { carKey: index, question: item.question, answer: item.answer },
+                'NewCard', {
+                  deckKey, cardKey: index, question: item.question, answer: item.answer,
+                },
               )}
             />
           )}

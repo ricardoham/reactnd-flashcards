@@ -46,7 +46,7 @@ class NewCard extends Component {
 
     const { inputQuestion, inputAnswer } = this.state;
     const deckKey = navigation.getParam('deckKey');
-    const carKey = navigation.getParam('carKey');
+    const cardKey = navigation.getParam('cardKey');
 
     if (!inputQuestion) {
       Alert.alert('Need a Question');
@@ -68,16 +68,14 @@ class NewCard extends Component {
         question: inputQuestion,
       };
 
-      actions.editCard(carKey, questions);
+      actions.editCard(deckKey, cardKey, questions)
+        .then(navigation.navigate('Home'));
     }
   }
 
   render() {
     const { navigation } = this.props;
     const { inputQuestion, inputAnswer } = this.state;
-    const carKey = navigation.getParam('carKey');
-
-    console.log('---CardKey', carKey);
 
     return (
       <View>

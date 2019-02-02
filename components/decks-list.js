@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
 class DecksList extends Component {
   render() {
     const { decks, navigation } = this.props;
-    console.log('----Decks', decks);
     return (
       <List>
         <FlatList

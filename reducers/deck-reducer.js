@@ -45,6 +45,10 @@ export default function (state = INITIAL_STATE, action) {
     case EDIT_CARD_SUCCESS:
       const editCard = cloneDeep([...state.decksData]);
       editCard[action.deckKey].questions[action.cardKey] = action.question;
+      return {
+        ...state,
+        decksData: editCard,
+      };
     default:
       return state;
   }
