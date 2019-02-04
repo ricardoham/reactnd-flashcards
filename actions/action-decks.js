@@ -5,6 +5,7 @@ import {
   EDIT_DECK_FAILURE, EDIT_CARD_SUCCESS,
   EDIT_CARD_FAILURE,
   REMOVE_DECK_FAILURE,
+  REMOVE_DECK_SUCCESS,
 } from './action-types';
 import * as decksAPI from '../utils/api';
 
