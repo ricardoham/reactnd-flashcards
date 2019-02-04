@@ -4,6 +4,7 @@ import {
   ADD_CARD_FAILURE, EDIT_DECK_SUCCESS,
   EDIT_DECK_FAILURE, EDIT_CARD_SUCCESS,
   EDIT_CARD_FAILURE,
+  REMOVE_DECK_FAILURE,
 } from './action-types';
 import * as decksAPI from '../utils/api';
 
@@ -67,6 +68,20 @@ export function editCard(deckKey, cardKey, question) {
     }))
       .catch(error => dispatch({
         type: EDIT_CARD_FAILURE,
+        error,
+      }))
+  );
+}
+
+export function removeDeck(deckKey) {
+  return dispatch => (
+    decksAPI.removeDeck().then(response => dispatch({
+      type: REMOVE_DECK_SUCCESS,
+      payload: response,
+      deckKey,
+    }))
+      .catch(error => dispatch({
+        type: REMOVE_DECK_FAILURE,
         error,
       }))
   );
