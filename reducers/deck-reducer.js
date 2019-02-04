@@ -57,8 +57,8 @@ export default function (state = INITIAL_STATE, action) {
     case REMOVE_DECK_SUCCESS:
       return {
         ...state,
-        decksData: state.decksData.filter(deck => deck.id !== action.deckKey);
-      }
+        decksData: state.decksData.filter(deck => deck.id !== action.deckKey),
+      };
     default:
       return state;
   }

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
-  View, Text, StyleSheet, Animated, TouchableOpacity,
+  View, Text, StyleSheet, Animated,
 } from 'react-native';
-import { Card, Button, Icon } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import { removeDeck } from '../actions/action-decks';
 import {
-  blue, green, purple, red,
+  blue, green, purple,
 } from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -60,6 +63,13 @@ class DeckView extends Component {
     ).start();
   }
 
+  removeDeck = (deckKey) => {
+    const { actions, navigation } = this.props;
+
+    actions.removeDeck(deckKey)
+      .then(() => navigation.navigate('Home'));
+  };
+
   renderExtraButtons = () => {
     const { navigation } = this.props;
     const title = navigation.getParam('title');
@@ -87,6 +97,7 @@ class DeckView extends Component {
           title="Remove Deck"
           buttonStyle={styles.extraButton}
           rightIcon={{ name: 'delete' }}
+          onPress={this.removeDeck(deckKey)}
         />
       </View>
     );
@@ -139,4 +150,8 @@ class DeckView extends Component {
   }
 }
 
-export default DeckView;
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ removeDeck }, dispatch),
+});
+
+export default connect(null, mapDispatchToProps)(DeckView);
