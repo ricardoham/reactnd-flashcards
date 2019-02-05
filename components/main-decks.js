@@ -24,6 +24,8 @@ class MainDecks extends Component {
         </View>
       );
     }
+    console.log(decks);
+
     return (
       <View>
         <DecksList

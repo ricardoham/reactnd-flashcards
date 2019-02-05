@@ -5,6 +5,7 @@ import {
   FormLabel, FormInput, Button,
 } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
+import uuidv4 from 'uuid/v4';
 import { addDeck, editDeck } from '../actions/action-decks';
 import styles from './form-buttons';
 import { dailyNotifications } from '../utils/helpers';
@@ -35,6 +36,7 @@ class NewDeck extends Component {
       Alert.alert('Need to fill with a Deck Title');
     } else if (!title) {
       const deck = {
+        id: uuidv4(),
         title: input,
         questions: [],
       };
