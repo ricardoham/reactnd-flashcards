@@ -1,8 +1,9 @@
-export const DECK_STORAGE_KEY = 'ricard:udacicards';
+export const DECK_STORAGE_KEY = 'ricard4:udacicards';
 export const NOTIFICATION_KEY = 'ricard:notifications';
 
 export const decks = [
   {
+    id: 'react-01',
     title: 'React',
     questions: [
       {
@@ -16,6 +17,7 @@ export const decks = [
     ],
   },
   {
+    id: 'javascript-01',
     title: 'JavaScript',
     questions: [
       {

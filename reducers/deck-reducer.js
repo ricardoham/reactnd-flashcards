@@ -55,6 +55,7 @@ export default function (state = INITIAL_STATE, action) {
         error: action.error,
       };
     case REMOVE_DECK_SUCCESS:
+      console.log('REDUCER DECKEY', action.deckKey);
       return {
         ...state,
         decksData: state.decksData.filter(deck => deck.id !== action.deckKey),

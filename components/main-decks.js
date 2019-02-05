@@ -17,6 +17,7 @@ class MainDecks extends Component {
     const { decks } = this.props;
 
     if (decks === null || decks === undefined) {
+      console.log(decks);
       return (
         <View>
           <Text>NO DECKS IN THIS MOMENT</Text>

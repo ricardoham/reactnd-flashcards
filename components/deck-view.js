@@ -7,6 +7,7 @@ import {
 import { Card, Button } from 'react-native-elements';
 import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
 import { removeDeck } from '../actions/action-decks';
+// import { removeDeck } from '../utils/api';
 import {
   blue, green, purple,
 } from '../utils/colors';
@@ -63,11 +64,16 @@ class DeckView extends Component {
     ).start();
   }
 
-  removeDeck = (deckKey) => {
+  removeDeck = () => {
     const { actions, navigation } = this.props;
+    const deckKey = navigation.getParam('deckKey');
+
+    console.log('REMOVE');
+    console.log('REMOVE DECK KEY', deckKey);
 
     actions.removeDeck(deckKey)
       .then(() => navigation.navigate('Home'));
+    // removeDeck(deckKey);
   };
 
   renderExtraButtons = () => {
@@ -97,7 +103,7 @@ class DeckView extends Component {
           title="Remove Deck"
           buttonStyle={styles.extraButton}
           rightIcon={{ name: 'delete' }}
-          onPress={this.removeDeck(deckKey)}
+          onPress={this.removeDeck}
         />
       </View>
     );
@@ -155,3 +161,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(DeckView);
+// export default DeckView;
