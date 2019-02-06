@@ -75,7 +75,6 @@ export function editCard(deckKey, cardKey, question) {
 }
 
 export function removeDeck(id) {
-  console.log('ACtion deck key', id);
   return dispatch => (
     decksAPI.removeDeck(id).then(response => dispatch({
       type: REMOVE_DECK_SUCCESS,

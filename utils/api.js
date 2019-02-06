@@ -33,9 +33,6 @@ export const editCard = (deckKey, questionKey, question) => AsyncStorage.getItem
 export const removeDeck = id => AsyncStorage.getItem(DECK_STORAGE_KEY)
   .then(JSON.parse)
   .then((data) => {
-    console.log('THE Data', data);
-    console.log('DECEKey', id);
     const deleteDeck = data.filter(i => i.id !== id);
-    console.log('FILTER TO DELETE', deleteDeck);
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(deleteDeck));
   });
