@@ -23,6 +23,8 @@ const styles = StyleSheet.create({
 class DecksList extends Component {
   render() {
     const { decks, navigation } = this.props;
+
+    console.log('DEcks', decks);
     return (
       <List>
         <FlatList
@@ -44,7 +46,9 @@ class DecksList extends Component {
                 <Text style={styles.listTextSubtitle}>{`${item.questions.length} cards`}</Text>
               }
               onPress={() => navigation.navigate(
-                'DeckView', { deckKey: index, title: item.title, questions: item.questions },
+                'DeckView', {
+                  deckKey: index, title: item.title, questions: item.questions, id: item.id,
+                },
               )}
             />
           )}

@@ -66,14 +66,13 @@ class DeckView extends Component {
 
   removeDeck = () => {
     const { actions, navigation } = this.props;
-    const deckKey = navigation.getParam('deckKey');
+    const id = navigation.getParam('id');
 
     console.log('REMOVE');
-    console.log('REMOVE DECK KEY', deckKey);
+    console.log('REMOVE DECK KEY', id);
 
-    actions.removeDeck(deckKey)
+    actions.removeDeck(id)
       .then(() => navigation.navigate('Home'));
-    // removeDeck(deckKey);
   };
 
   renderExtraButtons = () => {

@@ -30,22 +30,12 @@ export const editCard = (deckKey, questionKey, question) => AsyncStorage.getItem
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
   });
 
-export const removeDeck = deckKey => AsyncStorage.getItem(DECK_STORAGE_KEY)
+export const removeDeck = id => AsyncStorage.getItem(DECK_STORAGE_KEY)
   .then(JSON.parse)
   .then((data) => {
     console.log('THE Data', data);
-    console.log('DECEKey', deckKey);
-    const deleteDeck = data.filter(i => i.index !== deckKey);
+    console.log('DECEKey', id);
+    const deleteDeck = data.filter(i => i.id !== id);
     console.log('FILTER TO DELETE', deleteDeck);
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(deleteDeck));
   });
-
-// export function removeDeck(deckKey) {
-//   return AsyncStorage.getItem(DECK_STORAGE_KEY)
-//     .then((results) => {
-//       const data = JSON.parse(results);
-//       data[deckKey] = undefined;
-//       delete data[deckKey];
-//       AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
-//     });
-// }

@@ -74,14 +74,13 @@ export function editCard(deckKey, cardKey, question) {
   );
 }
 
-export function removeDeck(deckKey) {
-  console.log('Called Action');
-  console.log('ACtion deck key', deckKey);
+export function removeDeck(id) {
+  console.log('ACtion deck key', id);
   return dispatch => (
-    decksAPI.removeDeck(deckKey).then(response => dispatch({
+    decksAPI.removeDeck(id).then(response => dispatch({
       type: REMOVE_DECK_SUCCESS,
       payload: response,
-      deckKey,
+      id,
     }))
       .catch(error => dispatch({
         type: REMOVE_DECK_FAILURE,
