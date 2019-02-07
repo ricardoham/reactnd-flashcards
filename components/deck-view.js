@@ -109,6 +109,8 @@ class DeckView extends Component {
     const title = navigation.getParam('title');
     const questions = navigation.getParam('questions');
 
+    console.log('QUESTION', questions);
+
     return (
       <Animated.View
         style={[styles.viewContainer, { opacity }]}
@@ -136,6 +138,7 @@ class DeckView extends Component {
             )}
           />
           <Button
+            disabled={!questions.length}
             title="Edit Cards"
             backgroundColor={lightPurple}
             containerViewStyle={styles.cardButtons}
@@ -144,6 +147,7 @@ class DeckView extends Component {
             )}
           />
           <Button
+            disabled={!questions.length}
             title="Start Quiz"
             backgroundColor={green}
             onPress={() => navigation.navigate(

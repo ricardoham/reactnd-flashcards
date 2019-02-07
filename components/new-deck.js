@@ -40,9 +40,8 @@ class NewDeck extends Component {
         title: input,
         questions: [],
       };
-      actions.addDeck(deck)
-        .then(navigation.navigate('Home'));
-      // dailyNotifications();
+      actions.addDeck(deck);
+      dailyNotifications();
     } else if (title) {
       actions.editDeck(deckKey, input)
         .then(navigation.navigate('Home'));
@@ -81,11 +80,23 @@ class NewDeck extends Component {
             onPress={() => this.onSubmit()}
             buttonStyle={styles.submit}
           />
-          <Button
-            title="CANCEL"
-            onPress={() => this.setState({ input: '' })}
-            buttonStyle={styles.cancel}
-          />
+          {
+            title
+              ? (
+                <Button
+                  title="CANCEL"
+                  onPress={() => navigation.navigate('Home')}
+                  buttonStyle={styles.cancel}
+                />
+              )
+              : (
+                <Button
+                  title="CLEAR"
+                  onPress={() => this.setState({ input: '' })}
+                  buttonStyle={styles.cancel}
+                />
+              )
+          }
         </View>
       </View>
     );
