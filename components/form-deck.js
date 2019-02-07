@@ -10,7 +10,7 @@ import { addDeck, editDeck } from '../actions/action-decks';
 import styles from './form-buttons';
 import { dailyNotifications } from '../utils/helpers';
 
-class NewDeck extends Component {
+class FormDeck extends Component {
   constructor(props) {
     super(props);
     const { navigation } = this.props;
@@ -111,4 +111,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ addDeck, editDeck }, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewDeck);
+export default connect(mapStateToProps, mapDispatchToProps)(FormDeck);

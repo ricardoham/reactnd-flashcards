@@ -42,7 +42,7 @@ class CardsList extends Component {
                 <Text style={styles.listText}>{item.question}</Text>
               }
               onPress={() => navigation.navigate(
-                'NewCard', {
+                'FormCard', {
                   deckKey, cardKey: index, question: item.question, answer: item.answer,
                 },
               )}

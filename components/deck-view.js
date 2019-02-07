@@ -134,7 +134,7 @@ class DeckView extends Component {
             backgroundColor={blue}
             containerViewStyle={styles.cardButtons}
             onPress={() => navigation.navigate(
-              'NewCard', { deckKey },
+              'FormCard', { deckKey },
             )}
           />
           <Button

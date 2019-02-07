@@ -7,7 +7,7 @@ import { addCard, editCard } from '../actions/action-decks';
 import styles from './form-buttons';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
-class NewCard extends Component {
+class FormCard extends Component {
   constructor(props) {
     super(props);
     const { navigation } = this.props;
@@ -118,4 +118,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ addCard, editCard }, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCard);
+export default connect(mapStateToProps, mapDispatchToProps)(FormCard);
