@@ -42,7 +42,7 @@ class NewDeck extends Component {
       };
       actions.addDeck(deck)
         .then(navigation.navigate('Home'));
-      dailyNotifications();
+      // dailyNotifications();
     } else if (title) {
       actions.editDeck(deckKey, input)
         .then(navigation.navigate('Home'));

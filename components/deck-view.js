@@ -5,11 +5,10 @@ import {
   View, Text, StyleSheet, Animated,
 } from 'react-native';
 import { Card, Button } from 'react-native-elements';
-import { MaterialCommunityIcons, AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { removeDeck } from '../actions/action-decks';
-// import { removeDeck } from '../utils/api';
 import {
-  blue, green, purple,
+  blue, green, purple, red, lightPurple,
 } from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -17,24 +16,27 @@ const styles = StyleSheet.create({
     color: 'gray',
     justifyContent: 'center',
     paddingLeft: 4,
+    marginBottom: 10,
   },
   cardContainerBody: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   cardButtons: {
-    margin: 15,
+    marginBottom: 10,
     backgroundColor: blue,
   },
   viewContainer: {
+    flex: 1,
     opacity: 0,
   },
   touchableView: {
     flexDirection: 'row',
-    marginTop: 50,
+    justifyContent: 'center',
+    marginTop: 25,
   },
   extraButton: {
-    width: 100,
+    width: 110,
     height: 7,
     borderRadius: 3,
   },
@@ -67,10 +69,6 @@ class DeckView extends Component {
   removeDeck = () => {
     const { actions, navigation } = this.props;
     const id = navigation.getParam('id');
-
-    console.log('REMOVE');
-    console.log('REMOVE DECK KEY', id);
-
     actions.removeDeck(id)
       .then(() => navigation.navigate('Home'));
   };
@@ -78,7 +76,6 @@ class DeckView extends Component {
   renderExtraButtons = () => {
     const { navigation } = this.props;
     const title = navigation.getParam('title');
-    const questions = navigation.getParam('questions');
     const deckKey = navigation.getParam('deckKey');
 
     return (
@@ -86,16 +83,11 @@ class DeckView extends Component {
         <Button
           title="Edit Deck"
           rightIcon={{ name: 'edit' }}
+          fontSize={12}
           buttonStyle={styles.extraButton}
+          backgroundColor={lightPurple}
           onPress={() => navigation.navigate(
             'DeckEdit', { title, deckKey },
-          )}
-        />
-        <Button
-          title="Edit Cards"
-          buttonStyle={styles.extraButton}
-          onPress={() => navigation.navigate(
-            'CardsList', { deckKey, questions },
           )}
         />
         <Button
@@ -103,6 +95,8 @@ class DeckView extends Component {
           buttonStyle={styles.extraButton}
           rightIcon={{ name: 'delete' }}
           onPress={this.removeDeck}
+          fontSize={12}
+          backgroundColor={red}
         />
       </View>
     );
@@ -142,14 +136,23 @@ class DeckView extends Component {
             )}
           />
           <Button
+            title="Edit Cards"
+            backgroundColor={lightPurple}
+            containerViewStyle={styles.cardButtons}
+            onPress={() => navigation.navigate(
+              'CardsList', { deckKey, questions },
+            )}
+          />
+          <Button
             title="Start Quiz"
             backgroundColor={green}
             onPress={() => navigation.navigate(
               'QuizView', { questions },
             )}
           />
-          {this.renderExtraButtons()}
         </Card>
+        {this.renderExtraButtons()}
+
       </Animated.View>
     );
   }
@@ -160,4 +163,3 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(null, mapDispatchToProps)(DeckView);
-// export default DeckView;
