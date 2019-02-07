@@ -162,8 +162,6 @@ class QuizView extends Component {
           title="Back to Decks"
           buttonStyle={styles.backButton}
           onPress={() => navigation.navigate('Home')
-            .then(clearLocalNotification()
-              .then(setLocalNotification))
         }
         />
       </View>

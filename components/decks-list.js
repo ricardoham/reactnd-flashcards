@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, StyleSheet, Text } from 'react-native';
+import {
+  FlatList, StyleSheet, Text, View,
+} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SharedElement } from 'react-native-motion';
 import { List, ListItem } from 'react-native-elements';
@@ -23,6 +25,15 @@ const styles = StyleSheet.create({
 class DecksList extends Component {
   render() {
     const { decks, navigation } = this.props;
+
+    if (!decks || !decks.length) {
+      return (
+        <View>
+          <Text>You dont have any deck!</Text>
+          <Text>Create a New Deck Using the bottom tab menu.</Text>
+        </View>
+      );
+    }
     return (
       <List>
         <FlatList
@@ -44,7 +55,9 @@ class DecksList extends Component {
                 <Text style={styles.listTextSubtitle}>{`${item.questions.length} cards`}</Text>
               }
               onPress={() => navigation.navigate(
-                'DeckView', { deckKey: index, title: item.title, questions: item.questions },
+                'DeckView', {
+                  deckKey: index, title: item.title, questions: item.questions, id: item.id,
+                },
               )}
             />
           )}

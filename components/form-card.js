@@ -3,14 +3,27 @@ import { View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
-import { addCard } from '../actions/action-decks';
+import { addCard, editCard } from '../actions/action-decks';
 import styles from './form-buttons';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
-class NewCard extends Component {
-  state = {
-    inputQuestion: '',
-    inputAnswer: '',
+class FormCard extends Component {
+  constructor(props) {
+    super(props);
+    const { navigation } = this.props;
+    const question = navigation.getParam('question');
+    const answer = navigation.getParam('answer');
+
+    if (!question && !answer) {
+      this.state = {
+        inputQuestion: '',
+        inputAnswer: '',
+      };
+    }
+    this.state = {
+      inputQuestion: question,
+      inputAnswer: answer,
+    };
   }
 
   handleTextQuestion = (textQuestion) => {
@@ -26,16 +39,21 @@ class NewCard extends Component {
   }
 
   onSubmit = () => {
+    let questions = {};
     const { actions, navigation } = this.props;
+    const question = navigation.getParam('question');
+    const answer = navigation.getParam('answer');
+
     const { inputQuestion, inputAnswer } = this.state;
     const deckKey = navigation.getParam('deckKey');
+    const cardKey = navigation.getParam('cardKey');
 
     if (!inputQuestion) {
       Alert.alert('Need a Question');
     } else if (!inputAnswer) {
       Alert.alert('Need a Answer');
-    } else {
-      const questions = {
+    } else if (!question && !answer) {
+      questions = {
         answer: inputAnswer,
         question: inputQuestion,
       };
@@ -44,6 +62,14 @@ class NewCard extends Component {
         .then(navigation.navigate('Home'));
       clearLocalNotification()
         .then(setLocalNotification);
+    } else if (question && answer) {
+      questions = {
+        answer: inputAnswer,
+        question: inputQuestion,
+      };
+
+      actions.editCard(deckKey, cardKey, questions)
+        .then(navigation.navigate('Home'));
     }
   }
 
@@ -89,7 +115,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ addCard }, dispatch),
+  actions: bindActionCreators({ addCard, editCard }, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCard);
+export default connect(mapStateToProps, mapDispatchToProps)(FormCard);

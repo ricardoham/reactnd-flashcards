@@ -15,3 +15,24 @@ export const addCard = (deckKey, question) => AsyncStorage.getItem(DECK_STORAGE_
     data[deckKey].questions.push(question);
     AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
   });
+
+export const editDeck = (deckKey, title) => AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then(JSON.parse)
+  .then((data) => {
+    data[deckKey].title = title;
+    AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
+  });
+
+export const editCard = (deckKey, questionKey, question) => AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then(JSON.parse)
+  .then((data) => {
+    data[deckKey].questions[questionKey] = question;
+    AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
+  });
+
+export const removeDeck = id => AsyncStorage.getItem(DECK_STORAGE_KEY)
+  .then(JSON.parse)
+  .then((data) => {
+    const deleteDeck = data.filter(i => i.id !== id);
+    AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(deleteDeck));
+  });

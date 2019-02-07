@@ -6,18 +6,20 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import configureStore from './store/config-store';
 
 import MainDecks from './components/main-decks';
-import NewDeck from './components/new-deck';
+import FormDeck from './components/form-deck';
 import DeckView from './components/deck-view';
-import NewCard from './components/new-card';
+import FormCard from './components/form-card';
 import QuizView from './components/quiz-view';
 import SplashScreen from './components/splash-screen';
+import CardsList from './components/cards-list';
+
 import { blue, purple } from './utils/colors';
 import { setLocalNotification } from './utils/helpers';
 
 const TabNavigator = createBottomTabNavigator(
   {
     Decks: MainDecks,
-    NewDeck,
+    FormDeck,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
@@ -26,7 +28,7 @@ const TabNavigator = createBottomTabNavigator(
         let iconName;
         if (routeName === 'Decks') {
           iconName = 'cards-variant';
-        } else if (routeName === 'NewDeck') {
+        } else if (routeName === 'FormDeck') {
           iconName = 'new-box';
         }
 
@@ -66,8 +68,8 @@ const MainNavigator = createStackNavigator({
   DeckView: {
     screen: DeckView,
   },
-  NewCard: {
-    screen: NewCard,
+  FormCard: {
+    screen: FormCard,
     navigationOptions: {
       title: 'New Card',
       headerTintColor: '#fff',
@@ -80,6 +82,24 @@ const MainNavigator = createStackNavigator({
     screen: QuizView,
     navigationOptions: {
       title: 'Quiz!',
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: purple,
+      },
+    },
+  },
+  DeckEdit: {
+    screen: FormDeck,
+    navigationOptions: {
+      headerTintColor: '#fff',
+      headerStyle: {
+        backgroundColor: purple,
+      },
+    },
+  },
+  CardsList: {
+    screen: CardsList,
+    navigationOptions: {
       headerTintColor: '#fff',
       headerStyle: {
         backgroundColor: purple,
