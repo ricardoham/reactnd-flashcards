@@ -99,6 +99,7 @@ class FormDeck extends Component {
                 />
               )
           }
+          <Text />
         </View>
       </View>
     );

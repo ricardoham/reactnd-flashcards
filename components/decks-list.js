@@ -4,7 +4,7 @@ import {
   FlatList, StyleSheet, Text, View,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { List, ListItem } from 'react-native-elements';
+import { List, ListItem, FormLabel } from 'react-native-elements';
 import { purple, greyDark } from '../utils/colors';
 
 const styles = StyleSheet.create({
@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: 'gray',
   },
+  noDeckText: {
+    fontSize: 15,
+    color: greyDark,
+    justifyContent: 'center',
+  },
 });
 
 class DecksList extends Component {
@@ -28,8 +33,12 @@ class DecksList extends Component {
     if (!decks || !decks.length) {
       return (
         <View>
-          <Text>You dont have any deck!</Text>
-          <Text>Create a New Deck Using the bottom tab menu.</Text>
+          <FormLabel labelStyle={styles.noDeckText}>
+            You dont have any deck!
+          </FormLabel>
+          <FormLabel labelStyle={styles.noDeckText}>
+            Create a New Deck using the bottom tab menu.
+          </FormLabel>
         </View>
       );
     }
