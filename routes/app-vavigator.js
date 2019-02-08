@@ -42,7 +42,6 @@ const TabNavigator = createBottomTabNavigator(
   },
 );
 
-
 const MainNavigator = createStackNavigator({
   SplashScreen: {
     screen: SplashScreen,
@@ -105,6 +104,5 @@ const MainNavigator = createStackNavigator({
 });
 
 const AppContainer = createAppContainer(MainNavigator);
-
 
 export default AppContainer;

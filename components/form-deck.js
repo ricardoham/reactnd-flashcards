@@ -41,7 +41,8 @@ class FormDeck extends Component {
         title: input,
         questions: [],
       };
-      actions.addDeck(deck);
+      actions.addDeck(deck)
+        .then(() => this.setState({ input: '' }));
       dailyNotifications();
     } else if (title) {
       actions.editDeck(deckKey, input)
