@@ -7,7 +7,7 @@ import {
 import { bindActionCreators } from 'redux';
 import uuidv4 from 'uuid/v4';
 import { addDeck, editDeck } from '../actions/action-decks';
-import styles from './form-buttons';
+import styles from '../styles/form-buttons';
 import { dailyNotifications } from '../utils/helpers';
 
 class FormDeck extends Component {

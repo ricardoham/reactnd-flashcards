@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addCard, editCard } from '../actions/action-decks';
-import styles from './form-buttons';
+import styles from '../styles/form-buttons';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class FormCard extends Component {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Image, Animated, Text, StyleSheet,
 } from 'react-native';
@@ -59,5 +60,9 @@ class SplashScreen extends Component {
     );
   }
 }
+
+SplashScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default SplashScreen;

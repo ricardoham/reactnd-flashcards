@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -109,8 +110,6 @@ class DeckView extends Component {
     const title = navigation.getParam('title');
     const questions = navigation.getParam('questions');
 
-    console.log('QUESTION', questions);
-
     return (
       <Animated.View
         style={[styles.viewContainer, { opacity }]}
@@ -161,6 +160,11 @@ class DeckView extends Component {
     );
   }
 }
+
+DeckView.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+};
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ removeDeck }, dispatch),

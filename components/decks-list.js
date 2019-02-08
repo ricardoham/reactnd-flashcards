@@ -4,7 +4,6 @@ import {
   FlatList, StyleSheet, Text, View,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { SharedElement } from 'react-native-motion';
 import { List, ListItem } from 'react-native-elements';
 import { purple, greyDark } from '../utils/colors';
 
@@ -70,7 +69,7 @@ class DecksList extends Component {
 
 DecksList.propTypes = {
   decks: PropTypes.array.isRequired,
-  navigation: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
 };
 
 export default DecksList;
