@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
+import { AppLoading } from 'expo';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getDecks } from '../actions/action-decks';
@@ -17,11 +18,7 @@ class MainDecks extends Component {
     const { decks } = this.props;
 
     if (decks === null || decks === undefined) {
-      return (
-        <View>
-          <Text>NO DECKS IN THIS MOMENT</Text>
-        </View>
-      );
+      return <AppLoading />;
     }
 
     return (
