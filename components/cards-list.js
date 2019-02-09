@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { FlatList, StyleSheet, Text } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -54,5 +55,9 @@ class CardsList extends Component {
     );
   }
 }
+
+CardsList.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default CardsList;

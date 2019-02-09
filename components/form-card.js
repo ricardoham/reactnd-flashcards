@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { FormLabel, FormInput, Button } from 'react-native-elements';
 import { bindActionCreators } from 'redux';
 import { addCard, editCard } from '../actions/action-decks';
-import styles from './form-buttons';
+import styles from '../utils/form-buttons';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class FormCard extends Component {
@@ -109,6 +110,11 @@ class FormCard extends Component {
     );
   }
 }
+
+FormCard.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = state => ({
   decks: state.decks.decksData,

@@ -1,4 +1,4 @@
-export const DECK_STORAGE_KEY = 'ricard4:udacicards';
+export const DECK_STORAGE_KEY = 'flash:udacicards';
 export const NOTIFICATION_KEY = 'ricard:notifications';
 
 export const decks = [

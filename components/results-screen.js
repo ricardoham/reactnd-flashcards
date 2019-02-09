@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
 import { lightPurple, white, greyDark } from '../utils/colors';
@@ -60,5 +61,11 @@ class ResultsScreen extends Component {
     );
   }
 }
+
+ResultsScreen.propTypes = {
+  questionsCount: PropTypes.number.isRequired,
+  questionsCorrects: PropTypes.number.isRequired,
+};
+
 
 export default ResultsScreen;

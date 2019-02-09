@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, Alert } from 'react-native';
 import {
@@ -7,7 +8,7 @@ import {
 import { bindActionCreators } from 'redux';
 import uuidv4 from 'uuid/v4';
 import { addDeck, editDeck } from '../actions/action-decks';
-import styles from './form-buttons';
+import styles from '../utils/form-buttons';
 import { dailyNotifications } from '../utils/helpers';
 
 class FormDeck extends Component {
@@ -40,7 +41,8 @@ class FormDeck extends Component {
         title: input,
         questions: [],
       };
-      actions.addDeck(deck);
+      actions.addDeck(deck)
+        .then(() => this.setState({ input: '' }));
       dailyNotifications();
     } else if (title) {
       actions.editDeck(deckKey, input)
@@ -97,11 +99,17 @@ class FormDeck extends Component {
                 />
               )
           }
+          <Text />
         </View>
       </View>
     );
   }
 }
+
+FormDeck.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = state => ({
   decks: state.decks.decksData,

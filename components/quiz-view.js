@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button, Card } from 'react-native-elements';
 import ResultsScreen from './results-screen';
@@ -178,5 +179,9 @@ class QuizView extends Component {
     );
   }
 }
+
+QuizView.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
 
 export default QuizView;
