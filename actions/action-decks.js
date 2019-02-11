@@ -22,7 +22,7 @@ export function addDeck(deck) {
   return dispatch => (
     decksAPI.addDeck(deck).then(() => dispatch({
       type: ADD_DECK_SUCCESS,
-      deck,
+      payload: deck,
     }))
       .catch(error => dispatch({
         type: ADD_DECK_FAILURE,
@@ -35,8 +35,10 @@ export function addCard(deckKey, question) {
   return dispatch => (
     decksAPI.addCard(deckKey, question).then(() => dispatch({
       type: ADD_CARD_SUCCESS,
-      deckKey,
-      question,
+      payload: {
+        deckKey,
+        question,
+      },
     }))
       .catch(error => dispatch({
         type: ADD_CARD_FAILURE,
@@ -49,8 +51,10 @@ export function editDeck(deckKey, title) {
   return dispatch => (
     decksAPI.editDeck(deckKey, title).then(() => dispatch({
       type: EDIT_DECK_SUCCESS,
-      deckKey,
-      title,
+      payload: {
+        deckKey,
+        title,
+      },
     }))
       .catch(error => dispatch({
         type: EDIT_DECK_FAILURE,
@@ -63,9 +67,11 @@ export function editCard(deckKey, cardKey, question) {
   return dispatch => (
     decksAPI.editCard(cardKey, question).then(() => dispatch({
       type: EDIT_CARD_SUCCESS,
-      deckKey,
-      cardKey,
-      question,
+      payload: {
+        deckKey,
+        cardKey,
+        question,
+      },
     }))
       .catch(error => dispatch({
         type: EDIT_CARD_FAILURE,
@@ -78,8 +84,10 @@ export function removeDeck(id) {
   return dispatch => (
     decksAPI.removeDeck(id).then(response => dispatch({
       type: REMOVE_DECK_SUCCESS,
-      payload: response,
-      id,
+      payload: {
+        response,
+        id,
+      },
     }))
       .catch(error => dispatch({
         type: REMOVE_DECK_FAILURE,

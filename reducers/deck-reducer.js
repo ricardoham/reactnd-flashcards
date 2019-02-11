@@ -17,7 +17,7 @@ export default function (state = INITIAL_STATE, action) {
     case ADD_DECK_SUCCESS:
       return {
         ...state,
-        decksData: [...state.decksData, action.deck],
+        decksData: [...state.decksData, action.payload],
       };
     case ADD_DECK_FAILURE:
       return {
@@ -26,7 +26,7 @@ export default function (state = INITIAL_STATE, action) {
       };
     case ADD_CARD_SUCCESS:
       const updatedDeck = [...state.decksData];
-      updatedDeck[action.deckKey].questions.push(action.question);
+      updatedDeck[action.payload.deckKey].questions.push(action.payload.question);
       return {
         ...state,
         decksData: updatedDeck,
@@ -38,14 +38,14 @@ export default function (state = INITIAL_STATE, action) {
       };
     case EDIT_DECK_SUCCESS:
       const editedDeck = [...state.decksData];
-      editedDeck[action.deckKey].title = action.title;
+      editedDeck[action.payload.deckKey].title = action.payload.title;
       return {
         ...state,
         decksData: editedDeck,
       };
     case EDIT_CARD_SUCCESS:
       const editCard = cloneDeep([...state.decksData]);
-      editCard[action.deckKey].questions[action.cardKey] = action.question;
+      editCard[action.payload.deckKey].questions[action.payload.cardKey] = action.payload.question;
       return {
         ...state,
         decksData: editCard,
@@ -58,7 +58,7 @@ export default function (state = INITIAL_STATE, action) {
     case REMOVE_DECK_SUCCESS:
       return {
         ...state,
-        decksData: state.decksData.filter(deck => deck.id !== action.id),
+        decksData: state.decksData.filter(deck => deck.id !== action.payload.id),
       };
     default:
       return state;
