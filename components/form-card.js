@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { addCard, editCard } from '../actions/action-decks';
 import styles from '../utils/form-buttons';
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
-class FormCard extends Component {
+class FormCard extends React.PureComponent {
   constructor(props) {
     super(props);
     const { navigation } = this.props;

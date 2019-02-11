@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { View, Alert } from 'react-native';
@@ -11,7 +11,7 @@ import { addDeck, editDeck } from '../actions/action-decks';
 import styles from '../utils/form-buttons';
 import { dailyNotifications } from '../utils/helpers';
 
-class FormDeck extends Component {
+class FormDeck extends React.PureComponent {
   constructor(props) {
     super(props);
     const { navigation } = this.props;
