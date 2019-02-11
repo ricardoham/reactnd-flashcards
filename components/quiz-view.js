@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text, StyleSheet } from 'react-native';
 import { Button, Card } from 'react-native-elements';
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
 });
 
 
-class QuizView extends Component {
+class QuizView extends React.PureComponent {
   state = {
     questionsCorrects: 0,
     currentQuestion: 0,

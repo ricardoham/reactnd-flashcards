@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet } from 'react-native';
 import { Text } from 'react-native-elements';
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class ResultsScreen extends Component {
+class ResultsScreen extends React.PureComponent {
   render() {
     const { questionsCorrects, questionsCount } = this.props;
     const avg = (questionsCorrects / questionsCount) * 100;

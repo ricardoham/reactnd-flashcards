@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, StyleSheet, Text } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class CardsList extends Component {
+class CardsList extends React.PureComponent {
   render() {
     const { navigation } = this.props;
     const questions = navigation.getParam('questions');

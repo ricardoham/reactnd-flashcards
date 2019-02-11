@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   FlatList, StyleSheet, Text, View,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class DecksList extends Component {
+class DecksList extends React.PureComponent {
   render() {
     const { decks, navigation } = this.props;
 
